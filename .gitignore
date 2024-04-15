@@ -41,3 +41,4 @@ build/
 ## Frontend ##
 *.css
 *.css.map
+**/demo*
