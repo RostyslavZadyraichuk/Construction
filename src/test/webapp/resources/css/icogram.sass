@@ -5,8 +5,8 @@ $cran-pos: 50.06%
 $cran-offset: 4.4%
 $cran-top-pos: 42.62%
 $bricks-pos: 49.64%
-$trees-pos: 22.8%
-$trees-offset: 2.645%
+$ladder-pos: 22.76%
+$ladder-offset: 2.645%
 
 //lighter color: +50, +50, +50
 //darker color: -50, -50, -50
@@ -110,11 +110,15 @@ $door-color: rgb(234, 234, 234)
     bottom: 49.64%
 
   &.ladder
-    width: 47.73%
-    left: 28.135%
-
     &-base
+      width: 47.73%
+      left: 28.135%
       bottom: 17.5%
 
     &-floor
-      bottom: 22.8%
+      width: 47.73%
+      left: 28.135%
+
+      @for $i from 0 through 9
+        &.f#{$i}
+          bottom: $ladder-pos + $i * $ladder-offset
