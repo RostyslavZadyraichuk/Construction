@@ -63,6 +63,11 @@ public class Project {
     @Field
     private DayOfWeek[] holidays;
 
+    @Field(name = "changes_history")
+    @NotNull
+    @NotEmpty
+    private String[] actionsHistory;
+
     public Project(String buildingLocation) {
         this.buildingLocation = buildingLocation;
     }

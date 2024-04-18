@@ -44,9 +44,9 @@ public class User {
     @Field(name = "checked_messages")
     private String[] checkedMessages;
 
-    @Field(name = "is_verified")
-    @NotNull
-    private Boolean isVerified = false;
+//    @Field(name = "is_verified")
+//    @NotNull
+//    private Boolean isVerified = false;
 
     @Field
     private Subscription subscription;
