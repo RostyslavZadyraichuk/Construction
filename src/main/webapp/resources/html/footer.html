@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Footer</title>
+        <link rel="stylesheet" href="../css/footer.css">
+    </head>
+    <body>
+        <footer>
+            <div id="contact-form">
+                <form action="">
+                    <h2>Leave your message</h2>
+                    <input type="text" id="first-name" name="first-name" title="First name">
+                    <div>
+                        <input type="email" id="email" name="email" title="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <!-- use phone mask via jquery -->
+                        <input type="text" id="phone-number" name="phone-number" title="Phone">
+                    </div>
+                    <textarea type="text" id="comment" name="comment" title="Comment"></textarea>
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+            <div id="vertical-divider"></div>
+            <div id="contacts">
+                <h2>Or contact us</h2>
+                <p class="phone-number">+38 (050) 669-37-93</p>
+                <p class="phone-number">+38 (097) 669-37-93</p>
+                <br>
+                <p>info@build.ico</p>
+                <p>manager@build.ico</p>
+                <br>
+                <p>Ukraine, Lviv</p>
+                <p>5 Market Square</p>
+                <br>
+                <div id="facebook-icon" class="social-media"></div>
+                <div id="youtube-icon" class="social-media"></div>
+                <div id="twitter-icon" class="social-media"></div>
+            </div>
+        </footer>
+    </body>
+</html>
