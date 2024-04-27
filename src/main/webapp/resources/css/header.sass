@@ -1,2 +1,117 @@
 @import default
-@import fonts
+@import "_fonts.css"
+
+header
+  left: 0
+  right: 0
+  margin-left: auto
+  margin-right: auto
+  display: flex
+  justify-content: space-between
+  height: 100px
+  background-color: $gray-light
+  border-radius: 0 0 10px 10px
+
+  @media screen and (min-width: 2800px)
+    width: 1920px
+
+  @media screen and (min-width: 1300px) and (max-width: 2800px)
+    width: 68vw
+
+  @media screen and (min-width: 1000px) and (max-width: 1300px)
+    width: 85vw
+
+  @media screen and (min-width: 800px) and (max-width: 1000px)
+    width: 100vw
+
+  @media screen and (max-width: 800px)
+    width: 800px
+
+#left-side
+  margin-left: 3%
+  //width: 19%
+  width: 100px
+
+  & > *
+    display: inline
+
+#service-name
+  font-size: 1.6em
+
+#logo
+  height: 100px
+  filter: drop-shadow(2px 2px 2px $gray-middle)
+  transition: all 0.3s ease
+
+  &:hover
+    cursor: pointer
+    transform: scale(1.1)
+    transition: transform 0.3s ease
+
+#right-side
+  margin-right: 2.5%
+  display: inline-flex
+  justify-content: right
+  align-items: center
+  gap: 6%
+
+  @media screen and (min-width: 2800px)
+    width: 1440px
+
+  @media screen and (min-width: 1300px) and (max-width: 2800px)
+    width: 51vw
+
+  @media screen and (min-width: 1000px) and (max-width: 1300px)
+    width: 64vw
+
+  @media screen and (min-width: 800px) and (max-width: 1000px)
+    width: 75vw
+
+  @media screen and (max-width: 800px)
+    width: 600px
+
+  ul
+    display: flex
+    height: 100%
+    flex-wrap: nowrap
+    justify-content: right
+    align-content: center
+    gap: 6%
+
+    @media screen and (min-width: 1000px) and (max-width: 1050px)
+      gap: 3%
+
+    @media screen and (max-width: 900px)
+      flex-wrap: wrap
+      gap: 2%
+
+    li
+      display: inline-block
+      height: 100%
+
+      @media screen and (max-width: 900px)
+        height: 40%
+        flex-basis: 34%
+        //min-width: 160px
+
+    a
+      display: block
+      width: max-content
+      height: 100%
+      line-height: 100px
+      margin: auto
+
+      @media screen and (max-width: 900px)
+        line-height: 40px
+
+  .button
+    height: 50px
+    width: 180px
+    position: relative
+
+    a
+      width: fit-content
+      height: 100%
+      display: block
+      margin: auto
+      line-height: 50px

@@ -1,0 +1,237 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?n6sxvd');
+    src:  url('../fonts/icomoon.eot?n6sxvd#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?n6sxvd') format('truetype'),
+    url('../fonts/icomoon.woff?n6sxvd') format('woff'),
+    url('../fonts/icomoon.svg?n6sxvd#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-banknote:before {
+    content: "\e900";
+}
+.icon-circul:before {
+    content: "\e901";
+}
+.icon-angle:before {
+    content: "\e905";
+}
+.icon-ruler:before {
+    content: "\e906";
+}
+.icon-plus:before {
+    content: "\f067";
+}
+.icon-minus:before {
+    content: "\f068";
+}
+.icon-search:before {
+    content: "\f002";
+}
+.icon-star-full:before {
+    content: "\f005";
+}
+.icon-star-empty:before {
+    content: "\f006";
+}
+.icon-layer-matrix-small:before {
+    content: "\f009";
+}
+.icon-layer-matrix-big:before {
+    content: "\f00a";
+}
+.icon-layer-list:before {
+    content: "\f00b";
+}
+.icon-home:before {
+    content: "\f015";
+}
+.icon-road:before {
+    content: "\f018";
+}
+.icon-arrow-circle-up:before {
+    content: "\f01b";
+}
+.icon-qrcode:before {
+    content: "\f029";
+}
+.icon-location:before {
+    content: "\f041";
+}
+.icon-arrow-left-simple:before {
+    content: "\f053";
+}
+.icon-arrow-right-simple:before {
+    content: "\f054";
+}
+.icon-cross-circle:before {
+    content: "\f057";
+}
+.icon-expand:before {
+    content: "\f065";
+}
+.icon-exclamation-circle:before {
+    content: "\f06a";
+}
+.icon-exclamation-triangle:before {
+    content: "\f071";
+}
+.icon-warning:before {
+    content: "\f071";
+}
+.icon-calendar:before {
+    content: "\f073";
+}
+.icon-comment:before {
+    content: "\f075";
+}
+.icon-arrow-up-simple:before {
+    content: "\f077";
+}
+.icon-arrow-down-simple:before {
+    content: "\f078";
+}
+.icon-comments:before {
+    content: "\f086";
+}
+.icon-star-half-1:before {
+    content: "\f089";
+}
+.icon-sign-out:before {
+    content: "\f08b";
+}
+.icon-pin:before {
+    content: "\f08d";
+}
+.icon-sign-in:before {
+    content: "\f090";
+}
+.icon-phone:before {
+    content: "\f095";
+}
+.icon-check-empty:before {
+    content: "\f096";
+}
+.icon-twitter:before {
+    content: "\f099";
+}
+.icon-facebook:before {
+    content: "\f09a";
+}
+.icon-credit-card-1:before {
+    content: "\f09d";
+}
+.icon-wrench:before {
+    content: "\f0ad";
+}
+.icon-filter:before {
+    content: "\f0b0";
+}
+.icon-users:before {
+    content: "\f0c0";
+}
+.icon-paperclip:before {
+    content: "\f0c6";
+}
+.icon-navigation:before {
+    content: "\f0c9";
+}
+.icon-arrow-down-triangle:before {
+    content: "\f0d7";
+}
+.icon-arrow-up-triangle:before {
+    content: "\f0d8";
+}
+.icon-arrow-left-triangle:before {
+    content: "\f0d9";
+}
+.icon-arrow-right-triangle:before {
+    content: "\f0da";
+}
+.icon-mail:before {
+    content: "\f0e0";
+}
+.icon-linkedin:before {
+    content: "\f0e1";
+}
+.icon-radio-empty:before {
+    content: "\f10c";
+}
+.icon-quote-left:before {
+    content: "\f10d";
+}
+.icon-quote-right:before {
+    content: "\f10e";
+}
+.icon-load:before {
+    content: "\f110";
+}
+.icon-star-half-2:before {
+    content: "\f123";
+}
+.icon-check-full:before {
+    content: "\f14a";
+}
+.icon-radio-full:before {
+    content: "\f192";
+}
+.icon-trash:before {
+    content: "\f1f8";
+}
+.icon-toggle-off:before {
+    content: "\f204";
+}
+.icon-toggle-on:before {
+    content: "\f205";
+}
+.icon-credit-card-2:before {
+    content: "\f283";
+}
+.icon-question-circle:before {
+    content: "\f29c";
+}
+.icon-user-1:before {
+    content: "\f2bd";
+}
+.icon-user-2:before {
+    content: "\f2be";
+}
+.icon-buildings:before {
+    content: "\e907";
+}
+.icon-settings:before {
+    content: "\e902";
+}
+.icon-office:before {
+    content: "\e903";
+}
+.icon-shield:before {
+    content: "\e904";
+}
+.icon-paint:before {
+    content: "\e90c";
+}
+.icon-check-full-simple:before {
+    content: "\ea10";
+}
+.icon-check-empty-simple:before {
+    content: "\ea11";
+}

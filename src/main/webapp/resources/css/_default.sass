@@ -10,49 +10,73 @@ $brown: #6B3A1E
 $dark-brown: #3E3229
 $orange: #E8A928
 
-//*
-//  margin: 0
-//  padding: 0
-//  box-sizing: border-box
-//  text-decoration: none
-//  user-select: none
-//
-//body
-//  display: block
-//  position: static
-//  font-family: "BauhausC", "Baumans", "Arial", sans-serif
-//  font-weight: 500
-//  font-size: 0
-//  color: $gray-light
-//  min-width: 487px
-//  margin: 0 auto
-//  background-color: $gray-dark
-//  overflow-y: auto
-//  overflow-x: hidden
-//  min-height: 100vh
-//
-//  @media screen and (min-width: 1920px)
-//    width: 1920px
-//
-//  @media screen and (max-width: 1920px)
-//    width: 100vw
-//
-//#header-container
-//  position: absolute
-//  top: 0
-//  left: 0
-//  width: 100%
-//  z-index: 20
-//
-//#footer-container
-//  position: absolute
-//  left: 0
-//  width: 100%
-//
-//ul, ol
-//  list-style: none
-//
-//a, a:hover, a:visited, a:active
-//  text-decoration: none
-//  color: inherit
-//  outline: none
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  text-decoration: none
+  user-select: none
+
+body
+  display: block
+  position: static
+  //width: 68vw
+  font-family: "Inter", "Arial", sans-serif
+  font-weight: 400
+  font-size: 24px
+  color: $dark-brown
+  min-width: 850px
+  margin: 0 auto
+  background-color: $gray-light
+  overflow-y: auto
+  overflow-x: auto
+  min-height: 100vh
+
+  //@media screen and (min-width: 2800px)
+  //  width: 1920px
+  //
+  //@media screen and (min-width: 1000px) and (max-width: 1300px)
+  //  width: 85vw
+  //
+  //@media screen and (min-width: 800px) and (max-width: 1000px)
+  //  width: 100vw
+
+  //@media screen and (max-width: 850px)
+  //  width: 850px
+
+header
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 20
+
+footer
+  position: absolute
+  bottom: 0
+  left: 0
+  width: 100%
+
+ul, ol
+  list-style: none
+
+a, a:hover, a:visited, a:active
+  text-decoration: none
+  color: inherit
+  outline: none
+
+a:hover
+  color: $orange
+
+.button
+  transition: all 0.1s ease-out
+  border-radius: 5px
+
+  & > a:hover
+    color: inherit
+
+  &:hover
+    background-color: $orange
+    color: $gray-light
+    cursor: pointer
+    transition: all 0.1s ease-in
