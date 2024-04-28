@@ -3,6 +3,7 @@ package org.zadyraichuk.construction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 @SpringBootApplication
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
         securedEnabled = true,
         jsr250Enabled = true
 )
+@PropertySource(value = "classpath:/aws.properties")
 public class ConstructionApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
