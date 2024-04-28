@@ -1,7 +1,6 @@
 package org.zadyraichuk.construction.entity;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -20,7 +19,7 @@ public class Project {
 
     @Id
     @Indexed(unique = true)
-    private final ObjectId id = null;
+    private final ObjectId id;
 
     @Field
     @NotNull
@@ -68,7 +67,9 @@ public class Project {
     @NotEmpty
     private String[] actionsHistory;
 
-    public Project(String buildingLocation) {
+
+    public Project(ObjectId id, String buildingLocation) {
+        this.id = id;
         this.buildingLocation = buildingLocation;
     }
 

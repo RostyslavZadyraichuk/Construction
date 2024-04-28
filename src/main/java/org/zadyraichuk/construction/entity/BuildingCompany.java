@@ -14,13 +14,12 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Document(collection = "company")
 public class BuildingCompany {
 
     @Id
     @Indexed(unique = true)
-    private final ObjectId id = null;
+    private final ObjectId id;
 
     @Field
     @NotNull
@@ -52,5 +51,10 @@ public class BuildingCompany {
     @Field(name = "company_owner_full_name")
     @NotNull
     private String companyOwnerUserFullName;
+
+
+    public BuildingCompany(ObjectId id) {
+        this.id = id;
+    }
 
 }

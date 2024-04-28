@@ -1,7 +1,6 @@
 package org.zadyraichuk.construction.entity;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -14,25 +13,28 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Document(collection = "user")
 public class User {
 
     @Id
     @Indexed(unique = true)
-    private final ObjectId id = null;
+    private final ObjectId id;
 
     @Field
     @NotNull
     private Role role = Role.GENERAL_CONTRACTOR;
 
-    @Field(name = "full_name")
-    private final String fullName = null;
-
-    @Field(name = "username")
+    @Field
     @NotNull
-    @Indexed(unique = true)
-    private String userName;
+    private String email;
+
+    @Field(name = "full_name")
+    private final String fullName;
+
+//    @Field(name = "username")
+//    @NotNull
+//    @Indexed(unique = true)
+//    private String userName;
 
     @Field(name = "password")
     @NotNull
@@ -54,5 +56,11 @@ public class User {
     @Field(name = "is_new_company_owner")
     @NotNull
     private Boolean isNewCompanyOwner = true;
+
+
+    public User(ObjectId id, String fullName) {
+        this.id = id;
+        this.fullName = fullName;
+    }
 
 }
