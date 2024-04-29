@@ -6,13 +6,10 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 
-@Component
 public class AmazonS3Connector {
 
-    private AmazonS3Connector() {}
+    private static AmazonS3Connector instance;
 
     @Value("${aws.access.key}")
     private static String awsAccessKey;
@@ -22,12 +19,24 @@ public class AmazonS3Connector {
 
     private static final Regions REGION = Regions.EU_CENTRAL_1;
 
-    @Bean
-    public static AmazonS3 createPersonalClient() {
+    private final AmazonS3 s3;
+
+    private AmazonS3Connector() {
         BasicAWSCredentials credentials = new BasicAWSCredentials(awsAccessKey, awsSecretKey);
-        return AmazonS3ClientBuilder.standard()
+        s3 = AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withRegion(REGION)
                 .build();
+    }
+
+    public static AmazonS3Connector getInstance() {
+        if (instance == null) {
+            instance = new AmazonS3Connector();
+        }
+        return instance;
+    }
+
+    public AmazonS3 getClient() {
+        return s3;
     }
 }
