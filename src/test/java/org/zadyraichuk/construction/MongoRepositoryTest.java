@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataMongoTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class MongoRepositoryTest {
+class MongoRepositoryTest {
 
     @Autowired
     UserRepository ur;
