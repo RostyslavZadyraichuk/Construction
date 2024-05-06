@@ -68,6 +68,24 @@ a, a:hover, a:visited, a:active
 a:hover
   color: $orange
 
+textarea
+  resize: none
+
+input, textarea
+  font-size: 20px
+  height: 40px
+  border: 0
+  background-color: rgba(0, 0, 0, 0.2)
+  color: $dark-brown
+  padding: 5px
+
+  &.invalid
+    border: 2px solid red
+    color: red
+
+  &:focus
+    outline: none
+
 .button
   transition: all 0.1s ease-out
   border-radius: 5px
@@ -80,3 +98,23 @@ a:hover
     color: $gray-light
     cursor: pointer
     transition: all 0.1s ease-in
+
+  &.inactive
+    background-color: rgba(#cccccc, 0.7)
+    color: #999999
+
+    //& > a:hover
+    //color: #999999
+
+    &:hover
+      background-color: rgba(#cccccc, 0.7)
+      color: #999999
+      cursor: auto
+
+.icon
+  font-size: 40px
+  color: $dark-brown
+
+  &:hover
+    color: $orange
+    cursor: pointer

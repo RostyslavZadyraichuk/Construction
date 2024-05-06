@@ -5,37 +5,50 @@
         <title>Footer</title>
         <link rel="stylesheet" href="../css/footer.css">
     </head>
-    <body>
+    <body style="background-color: white">
         <footer>
-            <div id="contact-form">
-                <form action="">
-                    <h2>Leave your message</h2>
-                    <input type="text" id="first-name" name="first-name" title="First name">
-                    <div>
-                        <input type="email" id="email" name="email" title="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                        <!-- use phone mask via jquery -->
-                        <input type="text" id="phone-number" name="phone-number" title="Phone">
-                    </div>
-                    <textarea type="text" id="comment" name="comment" title="Comment"></textarea>
-                    <input type="submit" value="Send">
-                </form>
-            </div>
-            <div id="vertical-divider"></div>
-            <div id="contacts">
-                <h2>Or contact us</h2>
-                <p class="phone-number">+38 (050) 669-37-93</p>
-                <p class="phone-number">+38 (097) 669-37-93</p>
-                <br>
-                <p>info@build.ico</p>
-                <p>manager@build.ico</p>
-                <br>
-                <p>Ukraine, Lviv</p>
-                <p>5 Market Square</p>
-                <br>
-                <div id="facebook-icon" class="social-media"></div>
-                <div id="youtube-icon" class="social-media"></div>
-                <div id="twitter-icon" class="social-media"></div>
+            <div id="footer-container">
+                <div id="contact-form">
+                    <h2>Leave message</h2>
+                    <form action="">
+                        <input type="text" id="first-name" name="first-name" placeholder="First name" pattern="[A-Za-zа-яА-Я\s]+" required>
+                        <div>
+                            <input type="email" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                            <!-- use phone mask via jquery -->
+                            <input type="text" id="phone-number" name="phone-number" placeholder="Phone" required>
+                        </div>
+                        <textarea type="text" id="comment" name="comment" placeholder="Comment"></textarea>
+                        <input class="button inactive" type="submit" value="Send" disabled>
+                    </form>
+                </div>
+                <div id="vertical-divider"></div>
+                <div id="contacts">
+                    <h2>or contact us</h2>
+                    <p class="phone-number">+38 (050) 669-37-93</p>
+                    <p class="phone-number">+38 (097) 669-37-93</p>
+                    <br>
+                    <p>info@build.ico</p>
+                    <p>manager@build.ico</p>
+                    <br>
+                    <p>Ukraine, Lviv</p>
+                    <p>5 Market Square</p>
+                    <br>
+                    <br>
+                    <div class="social-media icon-facebook icon"></div>
+                    <div class="social-media icon-youtube icon"></div>
+                    <div class="social-media icon-twitter icon"></div>
+                </div>
             </div>
         </footer>
     </body>
+    <script crossorigin="anonymous"
+            integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js"
+            integrity="sha512-sR3EKGp4SG8zs7B0MEUxDeq8rw9wsuGVYNfbbO/GLCJ59LBE4baEfQBVsP2Y/h2n8M19YV1mujFANO1yA3ko7Q=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer">
+    </script>
+    <script src="../js/footer.js"></script>
 </html>
