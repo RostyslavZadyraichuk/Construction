@@ -72,23 +72,31 @@ textarea
   resize: none
 
 input, textarea
+
+  &:not(#timeline *)
+    font-size: 20px
+    height: 40px
+    border: 0
+    background-color: rgba(0, 0, 0, 0.2)
+    color: $dark-brown
+    padding: 5px
+
+    &.invalid
+      border: 2px solid red
+      color: red
+
+    &:focus
+      outline: none
+
+button
+  transition: all 0.1s ease-out
+  border-radius: 5px
   font-size: 20px
   height: 40px
   border: 0
   background-color: rgba(0, 0, 0, 0.2)
   color: $dark-brown
   padding: 5px
-
-  &.invalid
-    border: 2px solid red
-    color: red
-
-  &:focus
-    outline: none
-
-.button
-  transition: all 0.1s ease-out
-  border-radius: 5px
 
   & > a:hover
     color: inherit
@@ -98,6 +106,15 @@ input, textarea
     color: $gray-light
     cursor: pointer
     transition: all 0.1s ease-in
+
+  &.selected
+    background-color: $orange
+    color: $gray-light
+
+    &:hover
+      background-color: $orange
+      color: $gray-light
+      cursor: auto
 
   &.inactive
     background-color: rgba(#cccccc, 0.7)

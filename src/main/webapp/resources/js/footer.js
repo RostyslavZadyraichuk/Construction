@@ -64,9 +64,9 @@ $(document).ready(function () {
         let phoneIsDone = phoneNumberInput.hasClass("valid");
 
         if (nameIsDone && emailIsDone && phoneIsDone) {
-            $("footer .button").removeClass("inactive").enable();
+            $("footer button").removeClass("inactive").enable();
         } else {
-            $("footer .button").addClass("inactive").disable();
+            $("footer button").addClass("inactive").disable();
         }
     }
 })
