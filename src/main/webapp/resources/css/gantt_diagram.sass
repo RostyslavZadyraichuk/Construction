@@ -1,0 +1,69 @@
+@import default
+@import "_fonts.css"
+
+#timeline
+  width: 1500px
+  height: 800px
+
+#scale-buttons
+  button
+    display: inline-block
+    width: 200px
+    height: 50px
+
+.gantt_tree_icon.gantt_open,
+.gantt_tree_icon.gantt_close,
+.gantt_tree_icon.gantt_file
+  background-image: none !important
+  text-align: center
+  align-content: center
+
+  &:hover
+    color: $orange
+
+.gantt_task_content
+  color: transparent !important
+
+.gantt_task_line
+  background: $orange !important
+  border: 1px solid rgb(red($orange) - 30, green($orange) - 30, blue($orange) - 30) !important
+
+  .gantt_task_progress
+    background: rgb(red($orange) - 30, green($orange) - 30, blue($orange) - 30) !important
+
+.gantt_bar_task,
+.gantt_task_progress_wrapper
+  &:hover
+    cursor: default !important
+
+.gantt_bar_task
+  &.gantt_dependent_task
+    background: $gray-middle !important
+    border: 1px solid rgb(red($gray-middle) - 30, green($gray-middle) - 30, blue($gray-middle) - 30) !important
+
+    .gantt_task_progress
+      background: rgb(red($gray-middle) - 30, green($gray-middle) - 30, blue($gray-middle) - 30) !important
+
+    .gantt_task_content:hover
+      cursor: default !important
+
+.gantt_task_link:hover .gantt_line_wrapper div
+  box-shadow: none !important
+
+.gantt_grid_data .gantt_row:hover,
+.gantt_grid_data .gantt_row.odd:hover
+  background-color: transparent !important
+
+.gantt_drag_move,
+.gantt_timeline_move_available,
+.mouseDrag
+  cursor: grabbing !important
+
+.weekend
+  background: #e2e5e2 !important
+
+.gantt_line_wrapper div
+  background-color: $gray-middle !important
+
+.gantt_link_arrow
+  border-left-color: $gray-middle !important
