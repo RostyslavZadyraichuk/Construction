@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
         securedEnabled = true,
         jsr250Enabled = true
 )
-@PropertySource(value = "classpath:/aws.properties")
+@PropertySource(value = "classpath:/credential.properties")
 public class ConstructionApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

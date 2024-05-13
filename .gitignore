@@ -3,7 +3,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-src/main/resources/aws.properties
+src/main/resources/credential.properties
+src/main/resources/*.json
+src/main/resources/tokens/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
