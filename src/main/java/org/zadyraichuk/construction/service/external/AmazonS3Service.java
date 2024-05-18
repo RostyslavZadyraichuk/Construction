@@ -1,4 +1,4 @@
-package org.zadyraichuk.construction.service.aws;
+package org.zadyraichuk.construction.service.external;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;

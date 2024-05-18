@@ -1,4 +1,4 @@
-package org.zadyraichuk.construction.service.google;
+package org.zadyraichuk.construction.service.external;
 
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.Message;

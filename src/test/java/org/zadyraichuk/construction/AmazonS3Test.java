@@ -3,7 +3,7 @@ package org.zadyraichuk.construction;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.zadyraichuk.construction.service.aws.AmazonS3Service;
+import org.zadyraichuk.construction.service.external.AmazonS3Service;
 
 import java.io.File;
 import java.io.FileInputStream;
