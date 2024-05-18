@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -50,6 +51,8 @@ public class Review {
     @NotNull
     private final String generalContractorFullName;
 
+
+    @PersistenceConstructor
     public Review(String description,
                   LocalDate date,
                   Double rate,
@@ -63,4 +66,5 @@ public class Review {
         this.generalContractorId = generalContractorId;
         this.generalContractorFullName = generalContractorFullName;
     }
+
 }
