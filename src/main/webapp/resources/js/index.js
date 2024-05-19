@@ -53,4 +53,20 @@ $(document).ready(function () {
             $(".opacity-slider .container").eq(thisIndex).addClass("selected");
         }
     })
+
+    $(window).on("scroll", function () {
+        let verticalScroll = $(window).scrollTop();
+
+        if (verticalScroll >= 900) {
+            $("#navigate-top-arrow").addClass("visible");
+        } else {
+            $("#navigate-top-arrow").removeClass("visible");
+        }
+    })
+
+    $("#navigate-top-arrow").on("click", function () {
+        if ($(this).hasClass("visible")) {
+            $("html").animate({scrollTop: 0}, "slow");
+        }
+    })
 })
