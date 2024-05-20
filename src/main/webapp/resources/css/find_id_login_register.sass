@@ -1,0 +1,520 @@
+@import default
+@import _fonts.css
+
+.content-container
+  padding-top: 100px
+  padding-bottom: 147px
+  height: 100vh
+  overflow: hidden
+
+  header, footer
+    position: fixed
+    bottom: 0
+    width: 100%
+    background-color: $gray-dark
+    z-index: 5
+
+  footer
+    height: 147px
+
+  header
+    height: 100px
+
+  .simpleParallax
+    width: 100%
+    min-width: 850px
+    height: calc(100vh - 247px)
+    min-height: 520px
+    max-height: 100vh
+    position: absolute
+    top: 0
+    left: 0
+    z-index: -1
+
+    img
+      width: 100%
+      opacity: 0.4
+
+
+#forms-visible-area
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+  overflow: hidden
+  position: relative
+
+
+#forms-container
+  width: 100%
+  height: 200%
+  position: absolute
+  top: 0
+
+
+#switcher-down
+  position: absolute
+  margin: 0 !important
+  left: 0
+  bottom: 147px
+  height: 8%
+  width: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  gap: 15px
+  background: linear-gradient(transparent, $gray-dark)
+  transition: height 0.1s ease
+  z-index: 5
+
+  .icon
+    font-size: 1em
+    color: $orange !important
+
+  &:hover
+    cursor: pointer
+    height: 9%
+    transition: height 0.1s ease
+
+    p
+      color: $gray-light
+
+    .icon
+      color: $gray-light !important
+
+  p
+    width: fit-content
+    opacity: 1
+    color: $orange
+
+
+#switcher-up
+  position: absolute
+  margin: 0 !important
+  left: 0
+  top: 100px
+  height: 8%
+  width: 100%
+  display: none
+  justify-content: center
+  align-items: center
+  gap: 15px
+  background: linear-gradient($gray-dark, transparent)
+  opacity: 0
+  transition: height 0.1s ease
+  z-index: 5
+
+  .icon
+    font-size: 1em
+    color: $orange !important
+
+  &:hover
+    cursor: pointer
+    height: 9%
+    transition: height 0.1s ease
+
+    p
+      color: $gray-light
+
+    .icon
+      color: $gray-light !important
+
+  p
+    width: fit-content
+    opacity: 1
+    color: $orange
+
+
+#find-project-form
+  width: 100%
+  height: 50%
+  padding: 8% 12%
+
+  form
+    width: 100%
+    height: 100%
+
+    .image-wrapper
+      position: relative
+      width: 100%
+      height: 92%
+      background-color: $orange
+      padding: 0
+      transition: padding 0.2s ease
+
+      img
+        transition: width 0.2s ease, height 0.2s ease
+
+      &.exists
+        &:hover
+          cursor: pointer
+          padding: 1%
+          transition: padding 0.2s ease
+
+          img
+            width: 98%
+            height: 98%
+            transition: width 0.2s ease, height 0.2s ease
+
+    .form-controls
+      display: flex
+      height: 8%
+
+      & > *
+        height: 100%
+
+      input
+        flex-grow: 5
+        font-size: 0.8em
+        padding: 0 10px
+        color: $gray-dark
+        background-color: $gray-light
+
+      button
+        flex-grow: 2
+        border-radius: 0
+        background-color: $gray-middle
+        color: $orange
+        font-weight: bold
+
+        &:hover
+          color: $gray-light !important
+          background-color: $orange !important
+
+
+#trial-btn
+  display: block
+  width: 40%
+  height: 3%
+  margin: 1% auto
+  background-color: $orange
+  color: $gray-light
+  border-radius: 12px
+  font-size: 1em
+  font-weight: bold
+
+  &:hover
+    background-color: rgb(red($orange) - 10, green($orange) - 10, blue($orange) - 10)
+    color: $gray-middle
+
+
+#background-image
+  position: absolute
+  bottom: -10vh
+  left: 0
+  width: 100vw
+  height: 100vh
+  object-fit: cover
+
+
+#login-register-switch
+  display: flex
+  height: 8%
+  align-items: center
+  background-color: rgba($gray-dark, 0.9)
+
+  & > div
+    flex-basis: 0
+    transition: flex-grow 0.3s ease
+    width: fit-content
+    height: fit-content
+    text-align: center
+    color: $gray-light
+    font-size: 0.7em
+
+    &:hover
+      font-size: 0.8em
+      cursor: pointer
+
+      p, .icon
+        color: $orange !important
+
+    &.active
+      font-weight: bold !important
+      font-size: 1em !important
+
+      p, .icon
+        color: $orange !important
+
+      &:hover
+        font-size: 1em !important
+        cursor: default !important
+
+  .icon
+    margin: 0 5px
+    font-size: 0.9em
+
+  .empty-left, .empty-right
+    flex-grow: 0
+    transition: flex-grow 0.3s ease
+
+    &.active
+      flex-grow: 1 !important
+      transition: flex-grow 0.3s ease
+
+  .login, .register
+    flex-grow: 1
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: flex-grow 0.3s ease
+
+    &.active
+      flex-grow: 3
+      transition: flex-grow 0.3s ease
+
+
+#login-register-form
+  overflow: hidden
+  width: 100%
+  height: 45%
+  padding: 8% 6% 0 6%
+
+  input
+    margin-top: 4px
+    margin-bottom: 15px
+
+  button
+    margin-top: 10px
+
+  label
+    color: $orange !important
+
+  .container
+    width: 100%
+    height: 100%
+    padding: 4% 6%
+    background-color: rgba($gray-dark, 0.7)
+
+    .container-2
+      width: 100%
+      height: 92%
+      overflow: hidden
+
+      .forms
+        position: relative
+        height: 100%
+        width: 200%
+        display: flex
+
+        & > div
+          height: 100%
+          padding: 40px 0
+          width: 50%
+
+
+#login-form
+  width: fit-content
+  padding-top: 80px !important
+
+  form
+    height: 100%
+    width: 100%
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+
+    div
+      width: 70%
+
+      &:nth-child(2)
+        width: fit-content
+
+      input
+        width: 100%
+        background-color: rgba($gray-light, 0.8)
+
+      button
+        display: flex
+        justify-content: center
+        align-items: center
+        gap: 7px
+        margin: auto
+        width: 250px
+        color: $orange
+        background-color: rgba($gray-dark, 0.8)
+
+        &:hover
+          color: $gray-light
+          background-color: $orange
+
+          .icon
+            color: $gray-light !important
+
+        .icon
+          font-size: 1.3em
+          color: $orange !important
+
+
+#register-form
+  width: 100%
+  padding: 0 !important
+
+  form
+    height: 100%
+
+
+#register-selector
+  display: flex
+  width: 100%
+  height: 8%
+  align-items: center
+
+  input
+    display: none !important
+
+  & > div
+    width: 50%
+    height: 100%
+    font-size: 0.8em
+
+    label
+      color: $gray-light !important
+
+    &:hover
+      font-size: 0.9em
+      cursor: pointer
+      background-color: $gray-middle
+
+      label
+        color: $orange !important
+        cursor: pointer !important
+
+    &.active
+      background-color: rgba($gray-dark, 0.9)
+      font-size: 0.9em !important
+
+      label
+        color: $orange !important
+
+      &:hover
+        cursor: default !important
+
+        label
+          cursor: default !important
+
+    div
+      width: fit-content
+      margin: auto
+      height: 100%
+      align-content: center
+
+      & > *
+        white-space: nowrap
+
+
+#register-forms-container
+  height: 82%
+  width: 100%
+  display: flex
+  flex-wrap: nowrap
+  justify-content: space-between
+
+  label
+    font-size: 0.9em
+
+  input
+    width: 100%
+    font-size: 0.8em
+    margin-top: 0
+    margin-bottom: 8px
+    background-color: rgba($gray-light, 0.8)
+
+  h3
+    text-align: center
+    margin-top: 10px
+    color: $orange
+
+
+#user-fields
+  width: 100%
+
+  & > div
+    width: 70%
+    margin: auto
+
+
+#company-fields
+  width: 0
+
+  & > div
+    & > div
+      display: flex
+      flex-wrap: nowrap
+      justify-content: space-between
+
+      & > *
+        width: 48%
+
+
+#register-buttons
+  height: 10%
+  white-space: nowrap
+  width: 200%
+  display: flex
+  position: relative
+
+  & > div
+    width: 50%
+    display: flex
+    justify-content: space-around
+
+  button
+    margin: 0
+    width: 40%
+    color: $orange
+    background-color: rgba($gray-dark, 0.8)
+
+    &:hover
+      color: $gray-light
+      background-color: $orange
+
+
+#company-description-form
+  display: none
+  //display: flex
+  position: fixed
+  width: 76%
+  height: 60%
+  top: 18%
+  left: 12%
+  background-color: rgba($gray-dark, 0.95)
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+  padding: 3% 8%
+
+  & > div
+    width: 80%
+
+  h3
+    font-size: 1.5em
+    color: $orange
+    margin-bottom: 10px
+    text-align: center
+
+  input, textarea
+    width: 100%
+    font-size: 0.8em
+    margin-top: 0
+    margin-bottom: 8px
+    background-color: rgba($gray-light, 0.8)
+
+  textarea
+    height: 200px
+    font-size: 0.6em !important
+
+  button
+    display: block
+    margin: auto
+    width: 50%
+    height: 44px
+    color: $gray-dark
+    background-color: rgba($gray-light, 0.8)
+    font-size: 1.1em
+    font-weight: bold
+
+    &:hover
+      color: $gray-middle
+      background-color: $orange

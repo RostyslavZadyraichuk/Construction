@@ -121,7 +121,7 @@
 .icon-pin:before {
     content: "\f08d";
 }
-.icon-sign-in:before {
+.icon-sign-in:after {
     content: "\f090";
 }
 .icon-phone:before {

@@ -8,48 +8,39 @@ $(document).ready(function () {
     const phoneNumberInput = $("#phone-number");
 
     firstNameInput.keyup(function () {
-        let input = firstNameInput.val();
+        let input = $(this).val();
         if (input === "") {
-            firstNameInput.removeClass("invalid")
-            firstNameInput.removeClass("valid")
+            $(this).removeClass("invalid").removeClass("valid");
         } else if (firstNameRegex.test(input)) {
-            firstNameInput.removeClass("invalid")
-            firstNameInput.addClass("valid");
+            $(this).removeClass("invalid").addClass("valid");
         } else {
-            firstNameInput.removeClass("valid")
-            firstNameInput.addClass("invalid");
+            $(this).removeClass("valid").addClass("invalid");
         }
         checkFormIsDone();
     })
 
     emailInput.keyup(function () {
-        let input = emailInput.val();
+        let input = $(this).val();
         if (input === "") {
-            emailInput.removeClass("invalid")
-            emailInput.removeClass("valid")
+            $(this).removeClass("invalid").removeClass("valid");
         } else if (emailRegex.test(input)) {
-            emailInput.removeClass("invalid")
-            emailInput.addClass("valid");
+            $(this).removeClass("invalid").addClass("valid");
         } else {
-            emailInput.removeClass("valid")
-            emailInput.addClass("invalid");
+            $(this).removeClass("valid").addClass("invalid");
         }
         checkFormIsDone();
     })
 
     phoneNumberInput.inputmask("+38 (099) 999-99-99")
         .keyup(function () {
-        let input = phoneNumberInput.val();
+        let input = $(this).val();
         input = phoneMaskToString(input);
         if (input === "") {
-            phoneNumberInput.removeClass("invalid")
-            phoneNumberInput.removeClass("valid")
+            $(this).removeClass("invalid").removeClass("valid");
         } else if (phoneNumberRegex.test(input)) {
-            phoneNumberInput.removeClass("invalid")
-            phoneNumberInput.addClass("valid");
+            $(this).removeClass("invalid").addClass("valid");
         } else {
-            phoneNumberInput.removeClass("valid")
-            phoneNumberInput.addClass("invalid")
+            $(this).removeClass("valid").addClass("invalid");
         }
             checkFormIsDone();
     })
@@ -64,9 +55,9 @@ $(document).ready(function () {
         let phoneIsDone = phoneNumberInput.hasClass("valid");
 
         if (nameIsDone && emailIsDone && phoneIsDone) {
-            $("footer button").removeClass("inactive").enable();
+            $("footer button").removeClass("inactive").prop("disabled", false);
         } else {
-            $("footer button").addClass("inactive").disable();
+            $("footer button").addClass("inactive").prop("disabled", true);
         }
     }
 })
