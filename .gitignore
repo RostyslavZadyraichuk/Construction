@@ -4,6 +4,7 @@ target/
 !**/src/test/**/target/
 
 src/main/resources/aws.properties
+src/main/webapp/resources/img/not_used/**
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

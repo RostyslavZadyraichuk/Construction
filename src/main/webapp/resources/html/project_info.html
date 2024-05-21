@@ -1,0 +1,167 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Project</title>
+    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+    <link rel="stylesheet" href="../css/project_info.css">
+</head>
+<body>
+    <nav></nav>
+    <div class="content-container">
+        <div class="project-info">
+            <div>
+                <div id="main-image">
+                    <div class="image-wrapper">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="info">
+                    <div>
+                        <h2>Name</h2>
+                        <p>Some</p>
+                    </div>
+                    <div>
+                        <h2>Company</h2>
+                        <p>some</p>
+                    </div>
+                    <div>
+                        <h3>Description</h3>
+                        <p>some</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-details">
+            <div class="selector">
+                <div class="active">Visualization</div>
+                <div>Plans & Sheets</div>
+                <div>Timeline</div>
+            </div>
+            <div class="container-2">
+                <div>
+                    <div id="visual-container">
+                        <div id="icogram-container"></div>
+                        <div class="tasks">
+                            <div class="tasks-container">
+
+                                <div class="task task-1">
+                                    <div class="activator"></div>
+                                    <div class="icon icon-check-full"></div>
+                                    <input class="inactive" type="text" value="Task 1" disabled>
+                                </div>
+                                <div class="task task-1">
+                                    <div class="activator"></div>
+                                    <div class="icon icon-check-full"></div>
+                                    <input class="inactive" type="text" value="Task 2" disabled>
+                                </div>
+                                <div class="task task-1">
+                                    <div class="activator"></div>
+                                    <div class="icon icon-check-full"></div>
+                                    <input class="inactive" type="text" value="Task 3" disabled>
+                                </div>
+                                <div class="task task-2">
+                                    <div class="activator"></div>
+                                    <div class="icon icon-check-full"></div>
+                                    <input class="inactive" type="text" value="Task 3.1" disabled>
+                                </div>
+
+                                <div class="task task-2 active">
+                                    <div class="activator"></div>
+                                    <div class="icon icon-radio-full"></div>
+                                    <input class="inactive" type="text" value="Task 3.2" disabled>
+                                </div>
+                                <div class="tools">
+                                    <div>
+                                        <div id="edit-active-task">
+                                            <div class="icon icon-wrench"></div>
+                                            <div>Edit</div>
+                                        </div>
+                                        <div id="finish-active-task">
+                                            <div class="icon icon-check-full-simple"></div>
+                                            <div>Finish Now</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div>Start</div>
+                                        <input class="start-date-input" type="date" min="">
+                                        <div>End</div>
+                                        <input class="end-date-input" type="date" min="">
+                                    </div>
+                                    <div>
+                                        <button onclick="changeTask()">Save</button>
+                                    </div>
+                                </div>
+
+                                <div class="task task-2">
+                                    <div class="activator"></div>
+                                    <div class="icon icon-check-empty"></div>
+                                    <input class="inactive" type="text" value="Task 3.3" disabled>
+                                </div>
+                                <div class="task task-3">
+                                    <div class="activator"></div>
+                                    <div class="icon icon-check-empty"></div>
+                                    <input class="inactive" type="text" value="Task 3.3.1" disabled>
+                                </div>
+                                <div class="task task-1">
+                                    <div class="activator"></div>
+                                    <div class="icon icon-check-empty"></div>
+                                    <input class="inactive" type="text" value="Task 3.4" disabled>
+                                </div>
+                                <div class="task task-1">
+                                    <div class="activator"></div>
+                                    <div class="icon icon-check-empty"></div>
+                                    <input class="inactive" type="text" value="Task 3.5" disabled>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="schemes-container">
+                        <div class="icon icon-arrow-left-simple"></div>
+                        <div id="schemes-slider">
+                            <div class="image-wrapper">
+                                <img src="" alt="">
+                            </div>
+                            <div class="image-wrapper">
+                                <img src="" alt="">
+                            </div>
+                        </div>
+                        <div class="icon icon-arrow-right-simple"></div>
+                    </div>
+                    <div id="timeline-container">
+                        <div id="scale-buttons">
+                            <div value="week">Week</div>
+                            <div class="active" value="month">Month</div>
+                            <div value="year">Year</div>
+                        </div>
+                        <div id="timeline"></div>
+                    </div>
+                </div>
+            </div>
+            <button onclick="saveChanges()">Save Changes</button>
+        </div>
+    </div>
+    <div id="project-gallery">
+        <div class="icon icon-arrow-left-simple"></div>
+        <div id="gallery-slider">
+            <div class="image-wrapper">
+                <img src="" alt="">
+            </div>
+            <div class="image-wrapper">
+                <img src="" alt="">
+            </div>
+        </div>
+        <div class="icon icon-arrow-right-simple"></div>
+        <div class="icon icon-cross-circle"></div>
+    </div>
+    <footer>Mini</footer>
+</body>
+<script crossorigin="anonymous"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+<script src="../js/project_info.js"></script>
+</html>
