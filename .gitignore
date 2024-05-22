@@ -5,6 +5,7 @@ target/
 
 src/main/resources/aws.properties
 src/main/webapp/resources/img/not_used/**
+src/main/webapp/resources/css/need_merge/**
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
