@@ -21,12 +21,12 @@ public class YouControlConnector {
     private static final String YOU_CONTROL_HOST = "api.youscore.com.ua";
     private static final String COMPANY_INFO_PATH = "/v1/companyInfo/";
 
-    private String youControlKey;
+    private String youControlPublicKey;
     private URIBuilder uriBuilder;
     private HttpClient httpClient;
 
-    public YouControlConnector(@Value("${you.control.key}") String youControlKey) {
-        this.youControlKey = youControlKey;
+    public YouControlConnector(@Value("${you.control.public.key}") String youControlPublicKey) {
+        this.youControlPublicKey = youControlPublicKey;
 
         uriBuilder = new URIBuilder();
         uriBuilder.setScheme("https");
@@ -63,6 +63,7 @@ public class YouControlConnector {
         resetBuilder(COMPANY_INFO_PATH + companyIdentifier);
         HttpRequest request;
         HttpResponse<String> response;
+
         try {
             request = HttpRequest.newBuilder()
                     .uri(uriBuilder.build())
@@ -78,7 +79,7 @@ public class YouControlConnector {
     private void resetBuilder(String path) {
         uriBuilder.setPath(path);
         uriBuilder.clearParameters();
-        uriBuilder.addParameter("apiKey", youControlKey);
+        uriBuilder.addParameter("apiKey", youControlPublicKey);
     }
 
 }
