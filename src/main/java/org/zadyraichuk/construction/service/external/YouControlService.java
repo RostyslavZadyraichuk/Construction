@@ -1,13 +1,10 @@
 package org.zadyraichuk.construction.service.external;
 
 import org.apache.http.client.HttpResponseException;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
-import org.zadyraichuk.construction.config.YouControlConnector;
+import org.zadyraichuk.construction.config.external.YouControlConnector;
 
-import java.io.IOException;
-import java.net.http.HttpResponse;
 import java.util.Optional;
 
 @Service

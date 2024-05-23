@@ -1,7 +1,7 @@
 package org.zadyraichuk.construction.service.external;
 
 import org.springframework.stereotype.Service;
-import org.zadyraichuk.construction.config.LiqPayConnector;
+import org.zadyraichuk.construction.config.external.LiqPayConnector;
 
 @Service
 public class LiqPayService {

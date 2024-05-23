@@ -1,7 +1,7 @@
 package org.zadyraichuk.construction.service.external;
 
 import org.springframework.stereotype.Service;
-import org.zadyraichuk.construction.config.BankIDConnector;
+import org.zadyraichuk.construction.config.external.BankIDConnector;
 
 @Service
 public class BankIDService {

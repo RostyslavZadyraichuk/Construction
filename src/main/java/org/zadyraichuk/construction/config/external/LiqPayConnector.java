@@ -1,7 +1,6 @@
-package org.zadyraichuk.construction.config;
+package org.zadyraichuk.construction.config.external;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.http.HttpStatus;
 import org.apache.http.client.utils.URIBuilder;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;

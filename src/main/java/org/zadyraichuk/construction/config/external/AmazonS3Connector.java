@@ -1,4 +1,4 @@
-package org.zadyraichuk.construction.config;
+package org.zadyraichuk.construction.config.external;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;

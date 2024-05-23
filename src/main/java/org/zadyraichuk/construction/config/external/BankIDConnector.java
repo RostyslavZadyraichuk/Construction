@@ -1,4 +1,4 @@
-package org.zadyraichuk.construction.config;
+package org.zadyraichuk.construction.config.external;
 
 import org.apache.http.client.utils.URIBuilder;
 import org.springframework.beans.factory.annotation.Value;

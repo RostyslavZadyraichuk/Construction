@@ -4,7 +4,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
 import com.google.common.io.Files;
 import org.springframework.stereotype.Service;
-import org.zadyraichuk.construction.config.AmazonS3Connector;
+import org.zadyraichuk.construction.config.external.AmazonS3Connector;
 
 import java.io.*;
 import java.util.List;

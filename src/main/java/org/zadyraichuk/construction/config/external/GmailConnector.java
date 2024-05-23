@@ -1,4 +1,4 @@
-package org.zadyraichuk.construction.config;
+package org.zadyraichuk.construction.config.external;
 
 import com.google.api.client.auth.oauth2.*;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;

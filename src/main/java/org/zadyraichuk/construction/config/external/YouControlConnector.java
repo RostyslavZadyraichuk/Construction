@@ -1,4 +1,4 @@
-package org.zadyraichuk.construction.config;
+package org.zadyraichuk.construction.config.external;
 
 import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.utils.URIBuilder;

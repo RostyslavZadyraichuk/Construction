@@ -9,14 +9,14 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Service;
-import org.zadyraichuk.construction.config.GmailConnector;
+import org.zadyraichuk.construction.config.external.GmailConnector;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.Properties;
 
-import static org.zadyraichuk.construction.config.GmailConnector.*;
+import static org.zadyraichuk.construction.config.external.GmailConnector.*;
 
 @Service
 public class GmailService {
