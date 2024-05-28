@@ -49,6 +49,6 @@ public class BuildingCompany {
 
     @Field(name = "company_owner_full_name")
     @NotNull
-    private String companyOwnerUserFullName;
+    private String companyOwnerFullName;
 
 }
