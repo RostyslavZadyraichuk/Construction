@@ -13,15 +13,19 @@ public abstract class Task {
 
     @Field
     @NotNull
+    private Integer id;
+
+    @Field
+    @NotNull
     private String description;
 
     @Field(name = "planning_start")
     @NotNull
-    private final LocalDate planingStart;
+    private LocalDate planingStart;
 
     @Field(name = "planning_duration")
     @NotNull
-    private final Integer planingDuration;
+    private Integer planingDuration;
 
     @Field(name = "real_start")
     @NotNull
@@ -31,12 +35,7 @@ public abstract class Task {
     @NotNull
     private Integer realDuration;
 
-    public Task(String description, LocalDate planingStart, Integer planingDuration) {
-        this.description = description;
-        this.planingStart = planingStart;
-        this.planingDuration = planingDuration;
-        this.realStart = planingStart;
-        this.realDuration = planingDuration;
-    }
+    @Field
+    private Task parent;
 
 }

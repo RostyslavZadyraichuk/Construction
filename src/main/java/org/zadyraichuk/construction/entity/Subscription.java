@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.zadyraichuk.construction.enumeration.Periodicity;
 import org.zadyraichuk.construction.enumeration.UsageType;
 
 import javax.validation.constraints.NotNull;
@@ -16,31 +17,22 @@ public class Subscription {
     @Field(name = "operation_id")
     @Indexed(unique = true)
     @NotNull
-    private final String operationId;
+    private String operationId;
 
     @Field(name = "usage_type")
     @NotNull
-    private final UsageType usageType;
+    private UsageType usageType;
 
     @Field(name = "payment_date")
     @NotNull
-    private final LocalDate paymentDate;
+    private LocalDate paymentDate;
 
     @Field(name = "expiration_date")
     @NotNull
-    private final LocalDate expirationDate;
+    private LocalDate expirationDate;
 
-    @Field(name = "is_paid")
+    @Field(name = "periodicity")
     @NotNull
-    private Boolean isPaid = false;
+    private Periodicity periodicity;
 
-    public Subscription(String operationId,
-                        UsageType usageType,
-                        LocalDate paymentDate,
-                        LocalDate expirationDate) {
-        this.operationId = operationId;
-        this.usageType = usageType;
-        this.paymentDate = paymentDate;
-        this.expirationDate = expirationDate;
-    }
 }

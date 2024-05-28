@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -20,7 +19,7 @@ public class Project {
 
     @Id
     @Indexed(unique = true)
-    private final ObjectId id;
+    private ObjectId id;
 
     @Field
     @NotNull
@@ -31,7 +30,7 @@ public class Project {
 
     @Field(name = "location")
     @NotNull
-    private final String buildingLocation;
+    private String buildingLocation;
 
     @Field(name = "working_plan")
     @NotNull
@@ -67,45 +66,5 @@ public class Project {
     @NotNull
     @NotEmpty
     private String[] actionsHistory;
-
-
-    public Project() {
-        this.id = null;
-        this.buildingLocation = null;
-    }
-
-    public Project(String buildingLocation) {
-        this.id = null;
-        this.buildingLocation = buildingLocation;
-    }
-
-    @PersistenceConstructor
-    public Project(ObjectId id,
-                   String name,
-                   String description,
-                   String buildingLocation,
-                   @NotEmpty Task[] workingPlan,
-                   Boolean isVerified,
-                   ObjectId companyId,
-                   String companyName,
-                   ObjectId contractorId,
-                   String contractorFullName,
-                   Boolean isShowed,
-                   DayOfWeek[] holidays,
-                   @NotEmpty String[] actionsHistory) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.buildingLocation = buildingLocation;
-        this.workingPlan = workingPlan;
-        this.isVerified = isVerified;
-        this.companyId = companyId;
-        this.companyName = companyName;
-        this.contractorId = contractorId;
-        this.contractorFullName = contractorFullName;
-        this.isShowed = isShowed;
-        this.holidays = holidays;
-        this.actionsHistory = actionsHistory;
-    }
 
 }

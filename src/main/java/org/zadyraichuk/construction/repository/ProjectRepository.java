@@ -1,17 +1,17 @@
 package org.zadyraichuk.construction.repository;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import org.zadyraichuk.construction.entity.Project;
 
-import java.util.List;
-
 @Repository
 public interface ProjectRepository extends MongoRepository<Project, ObjectId> {
 
-    List<Project> findAllByCompanyId(ObjectId companyId);
+    Page<Project> findAllByCompanyId(ObjectId companyId, Pageable pageable);
 
-    List<Project> findAllByContractorId(ObjectId contractorId);
+    Page<Project> findAllByContractorId(ObjectId contractorId, Pageable pageable);
 
 }
