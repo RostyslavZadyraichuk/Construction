@@ -23,6 +23,8 @@ public class ProjectDTO extends ProjectSimpleDTO implements Progressable {
     private WorkingPlanDTO workingPlanDTO;
     //TODO add general contractor actions history that owner can show what he did
 //    private final List<String> actionsHistory;
+    //TODO include review
+//    private ReviewDTO reviewDTO;
 
     public ProjectDTO(String projectId,
                       String projectName,

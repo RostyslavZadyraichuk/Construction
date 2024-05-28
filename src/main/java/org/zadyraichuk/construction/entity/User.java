@@ -49,6 +49,9 @@ public class User implements UserDetails {
     @Field(name = "checked_messages")
     private String[] checkedMessages;
 
+    @Field(name = "has_picture")
+    private Boolean hasPicture = false;
+
 //    @Field(name = "is_verified")
 //    @NotNull
 //    private Boolean isVerified = false;
@@ -59,6 +62,10 @@ public class User implements UserDetails {
 //    @Field(name = "is_new_company_owner")
 //    @NotNull
 //    private Boolean isNewCompanyOwner = true;
+
+    public boolean hasPicture() {
+        return hasPicture;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

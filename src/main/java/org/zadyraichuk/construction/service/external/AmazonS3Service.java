@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 @Service
 public class AmazonS3Service {
 
+    private static final StringBuilder SB = new StringBuilder();
+
     private final AmazonS3 s3Client;
 
     public AmazonS3Service(AmazonS3Connector connector) {
@@ -21,25 +23,25 @@ public class AmazonS3Service {
     }
 
     public boolean isBucketExists(String bucketName) {
-        return s3Client.doesBucketExistV2(bucketName.toLowerCase());
+        return s3Client.doesBucketExistV2(bucketName);
     }
 
     public boolean createBucket(String bucketName) {
         if (isBucketExists(bucketName)) {
             return false;
         }
-        s3Client.createBucket(bucketName.toLowerCase());
+        s3Client.createBucket(bucketName);
         return true;
     }
 
     public void removeBucket(String bucketName) {
         if (isBucketExists(bucketName)) {
-            s3Client.deleteBucket(bucketName.toLowerCase());
+            s3Client.deleteBucket(bucketName);
         }
     }
 
     public boolean isFileExists(String bucketName, String fileName, String extension) {
-        return isFileExists(bucketName, "", fileName, extension);
+        return isFileExists(bucketName, null, fileName, extension);
     }
 
     public boolean isFileExists(String bucketName, String directory, String fileName, String extension) {
@@ -50,7 +52,7 @@ public class AmazonS3Service {
     }
 
     public boolean uploadFile(String bucketName, String fileName, File file) {
-        return uploadFile(bucketName, "", fileName, file);
+        return uploadFile(bucketName, null, fileName, file);
     }
 
     public boolean uploadFile(String bucketName, String directory, String fileName, File file) {
@@ -70,7 +72,7 @@ public class AmazonS3Service {
             meta.setContentLength(bis.available());
             meta.setContentType("image/" + extension);
 
-            s3Client.putObject(new PutObjectRequest(bucketName.toLowerCase(),
+            s3Client.putObject(new PutObjectRequest(bucketName,
                             toFilePath(directory, fileName, extension), bis, meta));
 
         } catch (IOException e) {
@@ -81,7 +83,7 @@ public class AmazonS3Service {
     }
 
     public URL getFileURL(String bucketName, String fileName, String extension) {
-        return getFileURL(bucketName, "", fileName, extension);
+        return getFileURL(bucketName, null, fileName, extension);
     }
 
     public URL getFileURL(String bucketName, String directory, String fileName, String extension) {
@@ -100,19 +102,25 @@ public class AmazonS3Service {
     public List<URL> getFileURLs(String bucketName, String directory) {
         if (isBucketExists(bucketName)) {
             GeneratePresignedUrlRequest request = new GeneratePresignedUrlRequest(bucketName, "");
-            List<S3ObjectSummary> summaries = s3Client.listObjectsV2(bucketName.toLowerCase())
+            List<S3ObjectSummary> summaries = s3Client.listObjectsV2(bucketName)
                     .getObjectSummaries();
             return summaries.stream().map(e -> {
                 String fileName = e.getKey();
-                request.setKey(directory + '/' + fileName);
+                request.setKey(directory + fileName);
                 return s3Client.generatePresignedUrl(request);
             }).collect(Collectors.toList());
         }
         return List.of();
     }
 
+    //TODO make recursively
+    public void removeDirectory(String bucketName, String directory) {
+        clearDirectory(bucketName, directory);
+        removeFile(bucketName, null, directory, null);
+    }
+
     public void removeFile(String bucketName, String fileName, String extension) {
-        removeFile(bucketName, "", fileName, extension);
+        removeFile(bucketName, null, fileName, extension);
     }
 
     public void removeFile(String bucketName, String directory, String fileName, String extension) {
@@ -121,16 +129,26 @@ public class AmazonS3Service {
         }
     }
 
-    //TODO add remove recursive allFiles which returns list of files and nested folders
-//    public void removeAllFiles(String bucketName) {
-//        if (isBucketExists(bucketName.toLowerCase())) {
-//            List<String> files = getExistedFiles(bucketName.toLowerCase());
-//            s3Client.deleteObjects(new DeleteObjectsRequest(bucketName.toLowerCase()));
-//        }
-//    }
+    public void clearDirectory(String bucketName, String directory) {
+        if (isBucketExists(bucketName)) {
+            ListObjectsRequest request = new ListObjectsRequest().withBucketName(bucketName)
+                    .withPrefix(directory);
+            ObjectListing objectListing = s3Client.listObjects(request);
+
+            for (S3ObjectSummary summary : objectListing.getObjectSummaries()) {
+                s3Client.deleteObject(bucketName, summary.getKey());
+            }
+        }
+    }
 
     private String toFilePath(String directory, String fileName, String extension) {
-        return directory + '/' + fileName + '.' + extension;
+        SB.setLength(0);
+        if (directory != null)
+            SB.append(directory);
+        SB.append(fileName);
+        if (extension != null)
+            SB.append('.').append(extension);
+        return SB.toString();
     }
 
 }

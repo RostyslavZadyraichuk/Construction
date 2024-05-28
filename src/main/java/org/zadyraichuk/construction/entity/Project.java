@@ -67,4 +67,11 @@ public class Project {
     @NotEmpty
     private String[] actionsHistory;
 
+    @Field(name = "has_picture")
+    private Boolean hasPicture = false;
+
+    public boolean hasPicture() {
+        return hasPicture;
+    }
+
 }

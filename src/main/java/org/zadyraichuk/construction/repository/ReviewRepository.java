@@ -1,6 +1,8 @@
 package org.zadyraichuk.construction.repository;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import org.zadyraichuk.construction.entity.Review;
@@ -11,5 +13,7 @@ import java.util.Optional;
 public interface ReviewRepository extends MongoRepository<Review, ObjectId> {
 
     Optional<Review> findByProjectId(ObjectId id);
+
+    Page<Review> findByOrderByRateDesc(Pageable pageable);
 
 }

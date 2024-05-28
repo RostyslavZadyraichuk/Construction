@@ -51,4 +51,11 @@ public class BuildingCompany {
     @NotNull
     private String companyOwnerFullName;
 
+    @Field(name = "has_picture")
+    private Boolean hasPicture = false;
+
+    public boolean hasPicture() {
+        return hasPicture;
+    }
+
 }

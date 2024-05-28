@@ -6,6 +6,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.zadyraichuk.construction.dto.BuildingCompanyDTO;
+import org.zadyraichuk.construction.dto.creation.CompanyRegisterDTO;
 import org.zadyraichuk.construction.dto.simple.CompanySimpleDTO;
 import org.zadyraichuk.construction.dto.simple.UserSimpleDTO;
 import org.zadyraichuk.construction.entity.BuildingCompany;
@@ -37,6 +38,13 @@ public abstract class BuildingCompanyMapper extends GeneralMapper {
     @Mapping(source = "phoneNumber", target = "phoneNumber")
     @Mapping(source = "email", target = "email")
     public abstract BuildingCompany toEntity(BuildingCompanyDTO company);
+
+    @Mapping(source = "name", target = "name")
+    @Mapping(source = "webSite", target = "website")
+    @Mapping(source = "address", target = "officeLocation")
+    @Mapping(source = "phoneNumber", target = "phoneNumber")
+    @Mapping(source = "email", target = "email")
+    public abstract BuildingCompany toEntity(CompanyRegisterDTO company);
 
     @Mapping(source = "id", target = "companyId", qualifiedByName = "toStringId")
     @Mapping(source = "name", target = "companyName")
