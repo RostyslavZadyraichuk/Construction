@@ -5,10 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.zadyraichuk.construction.service.external.AmazonS3Service;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,7 +27,7 @@ class AmazonS3Test {
     private AmazonS3Service aws;
 
     @BeforeAll
-    void createEmptyFilesForWriting() {
+    void setUpBeforeAll() {
         if (writeToJPG.exists())
             writeToJPG.delete();
         if (writeToPNG.exists())
@@ -61,11 +59,11 @@ class AmazonS3Test {
     @Test
     @Order(2)
     void uploadJPG() {
-        boolean fileExists = aws.isFileExists(BUCKET, readFromJPG.getName());
+        boolean fileExists = aws.isFileExists(BUCKET, "cloud", "jpg");
         assertFalse(fileExists);
 
-        boolean uploaded = aws.uploadFile(BUCKET, readFromJPG);
-        fileExists = aws.isFileExists(BUCKET, readFromJPG.getName());
+        boolean uploaded = aws.uploadFile(BUCKET, "cloud", readFromJPG);
+        fileExists = aws.isFileExists(BUCKET, "cloud", "jpg");
         assertTrue(uploaded);
         assertTrue(fileExists);
     }
@@ -73,11 +71,11 @@ class AmazonS3Test {
     @Test
     @Order(3)
     void uploadPNG() {
-        boolean fileExists = aws.isFileExists(BUCKET, readFromPNG.getName());
+        boolean fileExists = aws.isFileExists(BUCKET, "planet", "png");
         assertFalse(fileExists);
 
-        boolean uploaded = aws.uploadFile(BUCKET, readFromPNG);
-        fileExists = aws.isFileExists(BUCKET, readFromPNG.getName());
+        boolean uploaded = aws.uploadFile(BUCKET, "planet", readFromPNG);
+        fileExists = aws.isFileExists(BUCKET, "planet", "png");
         assertTrue(uploaded);
         assertTrue(fileExists);
     }
@@ -85,22 +83,22 @@ class AmazonS3Test {
     @Test
     @Order(4)
     void loadJPG() {
-        boolean fileExists = aws.isFileExists(BUCKET, readFromJPG.getName());
+        boolean fileExists = aws.isFileExists(BUCKET, "cloud", "jpg");
         assertTrue(fileExists);
 
-        File loaded = aws.loadFile(BUCKET, readFromJPG.getName());
-        assertNotNull(loaded);
+        URL url = aws.getFileURL(BUCKET, "cloud", "jpg");
+        assertNotNull(url);
 
-        quickCopyFile(loaded, writeToJPG);
+        quickCopyFile(url, writeToJPG);
     }
 
     @Test
     @Order(5)
     void loadPNG() {
-        boolean fileExists = aws.isFileExists(BUCKET, readFromPNG.getName());
+        boolean fileExists = aws.isFileExists(BUCKET, "planet", "png");
         assertTrue(fileExists);
 
-        File loaded = aws.loadFile(BUCKET, readFromPNG.getName());
+        URL loaded = aws.getFileURL(BUCKET, "planet", "png");
         assertNotNull(loaded);
 
         quickCopyFile(loaded, writeToPNG);
@@ -109,21 +107,20 @@ class AmazonS3Test {
     @Test
     @Order(6)
     void getExistedFilesList() {
-        List<String> files = aws.getExistedFiles(BUCKET);
+        List<URL> files = aws.getFileURLs(BUCKET);
         assertNotNull(files);
         assertFalse(files.isEmpty());
-        assertTrue(files.contains(readFromPNG.getName()));
-        assertTrue(files.contains(readFromJPG.getName()));
+        assertEquals(files.size(), 2);
     }
 
     @Test
     @Order(7)
     void removeFile() {
-        boolean fileExists = aws.isFileExists(BUCKET, readFromJPG.getName());
+        boolean fileExists = aws.isFileExists(BUCKET, "cloud", "jpg");
         assertTrue(fileExists);
 
-        aws.removeFile(BUCKET, readFromJPG.getName());
-        fileExists = aws.isFileExists(BUCKET, readFromJPG.getName());
+        aws.removeFile(BUCKET, "cloud", "jpg");
+        fileExists = aws.isFileExists(BUCKET, "cloud", "jpg");
         assertFalse(fileExists);
     }
 
@@ -133,28 +130,28 @@ class AmazonS3Test {
         boolean bucketExists = aws.isBucketExists(BUCKET);
         assertTrue(bucketExists);
 
-        aws.removeFile(BUCKET, readFromPNG.getName());
+        aws.removeFile(BUCKET, "planet", "png");
         aws.removeBucket(BUCKET);
         bucketExists = aws.isBucketExists(BUCKET);
         assertFalse(bucketExists);
     }
 
     @AfterAll
-    void deleteAllOnLocalAndRemote() {
+    void setUpAfterAll() {
         if (writeToJPG.exists())
             writeToJPG.delete();
         if (writeToPNG.exists())
             writeToPNG.delete();
 
-        aws.removeFile(BUCKET, readFromJPG.getName());
-        aws.removeFile(BUCKET, readFromPNG.getName());
+        aws.removeFile(BUCKET, readFromJPG.getName(), "jpg");
+        aws.removeFile(BUCKET, readFromPNG.getName(), "jpg");
         aws.removeBucket(BUCKET);
     }
 
-    private static void quickCopyFile(File source, File dest) {
-        try (FileInputStream fis = new FileInputStream(source);
-            FileOutputStream fos = new FileOutputStream(dest)) {
-            fos.write(fis.readAllBytes());
+    private static void quickCopyFile(URL source, File dest) {
+        try (BufferedInputStream bis = new BufferedInputStream(source.openStream());
+             FileOutputStream fos = new FileOutputStream(dest)) {
+            fos.write(bis.readAllBytes());
         } catch (IOException ignored) {}
     }
 
