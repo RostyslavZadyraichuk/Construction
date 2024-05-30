@@ -4,4 +4,6 @@ public interface Progressable {
 
     int calculateProgress();
 
+    String getCurrentStage();
+
 }

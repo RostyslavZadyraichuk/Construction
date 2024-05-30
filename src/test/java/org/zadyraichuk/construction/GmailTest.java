@@ -3,7 +3,7 @@ package org.zadyraichuk.construction;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.zadyraichuk.construction.service.google.GmailService;
+import org.zadyraichuk.construction.service.external.GmailService;
 
 import static org.junit.jupiter.api.Assertions.*;
 

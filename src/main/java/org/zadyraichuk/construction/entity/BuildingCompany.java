@@ -1,11 +1,9 @@
 package org.zadyraichuk.construction.entity;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -20,7 +18,7 @@ public class BuildingCompany {
 
     @Id
     @Indexed(unique = true)
-    private final ObjectId id;
+    private ObjectId id;
 
     @Field
     @NotNull
@@ -51,32 +49,13 @@ public class BuildingCompany {
 
     @Field(name = "company_owner_full_name")
     @NotNull
-    private String companyOwnerUserFullName;
+    private String companyOwnerFullName;
 
+    @Field(name = "has_picture")
+    private Boolean hasPicture = false;
 
-    public BuildingCompany() {
-        this.id = null;
-    }
-
-    @PersistenceConstructor
-    public BuildingCompany(ObjectId id,
-                           String name,
-                           String description,
-                           String email,
-                           String phoneNumber,
-                           String officeLocation,
-                           String website,
-                           ObjectId companyOwnerUserId,
-                           String companyOwnerUserFullName) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.officeLocation = officeLocation;
-        this.website = website;
-        this.companyOwnerUserId = companyOwnerUserId;
-        this.companyOwnerUserFullName = companyOwnerUserFullName;
+    public boolean hasPicture() {
+        return hasPicture;
     }
 
 }

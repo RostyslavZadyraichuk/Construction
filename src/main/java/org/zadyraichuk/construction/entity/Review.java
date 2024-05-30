@@ -5,7 +5,6 @@ import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -19,21 +18,21 @@ import java.time.LocalDate;
 public class Review {
 
     @Field
-    private final String description;
+    private String description;
 
     @Field
     @NotNull
-    private final LocalDate date;
+    private LocalDate date;
 
     @Field
     @NotNull
     @Range(min = 1, max = 5)
-    private final Double rate;
+    private Double rate;
 
     @Id
     @Indexed(unique = true)
     @NotNull
-    private final ObjectId projectId;
+    private ObjectId projectId;
 
     @Field(name = "project_name")
     @NotNull
@@ -45,26 +44,10 @@ public class Review {
 
     @Field(name = "contractor_id")
     @NotNull
-    private final ObjectId generalContractorId;
+    private ObjectId generalContractorId;
 
     @Field(name = "contractor_full_name")
     @NotNull
-    private final String generalContractorFullName;
-
-
-    @PersistenceConstructor
-    public Review(String description,
-                  LocalDate date,
-                  Double rate,
-                  ObjectId projectId,
-                  ObjectId generalContractorId,
-                  String generalContractorFullName) {
-        this.description = description;
-        this.date = date;
-        this.rate = rate;
-        this.projectId = projectId;
-        this.generalContractorId = generalContractorId;
-        this.generalContractorFullName = generalContractorFullName;
-    }
+    private String generalContractorFullName;
 
 }

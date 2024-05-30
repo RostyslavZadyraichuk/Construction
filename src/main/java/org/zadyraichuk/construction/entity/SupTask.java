@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,7 +16,4 @@ public class SupTask extends Task {
     @NotEmpty
     private Task[] subTasks;
 
-    public SupTask(String description, LocalDate planingStart, Integer planingDuration) {
-        super(description, planingStart, planingDuration);
-    }
 }
