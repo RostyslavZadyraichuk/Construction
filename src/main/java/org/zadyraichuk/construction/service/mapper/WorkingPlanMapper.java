@@ -54,7 +54,7 @@ public abstract class WorkingPlanMapper {
 
     //TODO rename
     public List<TaskDTO> toDTOList(Task[] tasks) {
-        List<TaskDTO> dtos = new ArrayList<>(tasks.length);
+        List<TaskDTO> dtos = new ArrayList<>();
         Map<Integer, TaskDTO> allTasks = getAllTasks(tasks);
         setDependencies(allTasks, tasks, dtos);
         return dtos;
@@ -126,7 +126,7 @@ public abstract class WorkingPlanMapper {
     private void setDependencies(Map<Integer, TaskDTO> tasks, Task[] src, List<TaskDTO> dest) {
         for (Task task : src) {
             TaskDTO dto = tm.toDTO(task);
-            dto.setParent(tasks.get(task.getParent().getId()));
+            dto.setParent((SupTaskDTO) tasks.get(task.getParent().getId()));
 
             if (dto.getClass().equals(SupTaskDTO.class)) {
                 Task[] childrenEntity = ((SupTask) task).getSubTasks();

@@ -27,8 +27,4 @@ public class FloorTaskDTO extends SubTaskDTO {
         this.floor = floor;
     }
 
-    @Override
-    public FloorTaskDTO clone() throws CloneNotSupportedException {
-        return (FloorTaskDTO) super.clone();
-    }
 }

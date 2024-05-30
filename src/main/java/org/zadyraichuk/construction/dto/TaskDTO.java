@@ -6,12 +6,12 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Getter
-@Setter
-public abstract class TaskDTO implements Progressable, Cloneable {
+public abstract class TaskDTO implements Progressable {
 
     protected int id;
+    @Setter
     protected String description;
-    protected TaskDTO parent;
+    protected SupTaskDTO parent;
     protected LocalDate planningStart;
     protected int planningDurationInDays;
     protected LocalDate realStart;
@@ -43,10 +43,17 @@ public abstract class TaskDTO implements Progressable, Cloneable {
         return calculateProgress() > 0 && calculateProgress() < 100;
     }
 
-    @Override
-    public TaskDTO clone() throws CloneNotSupportedException {
-        TaskDTO clone = (TaskDTO) super.clone();
-        clone.setParent(null);
-        return clone;
+    public LocalDate getFinishDate() {
+        return realStart.plusDays(realDurationInDays);
+    }
+
+    public void setParent(SupTaskDTO parent) {
+        this.parent = parent;
+        parent.addSubTaskAvoidLoop(this);
+        parent.updateDateAndDuration();
+    }
+
+    protected void setParentAvoidLoop(SupTaskDTO parent) {
+        this.parent = parent;
     }
 }

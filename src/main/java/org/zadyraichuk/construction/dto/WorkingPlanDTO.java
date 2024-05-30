@@ -4,7 +4,9 @@ import lombok.Getter;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Getter
 public class WorkingPlanDTO implements Progressable {
@@ -22,13 +24,14 @@ public class WorkingPlanDTO implements Progressable {
         this.holidays = holidays;
     }
 
-    public void addMainTask(TaskDTO taskDTO) {
-        this.mainTasks.add(taskDTO);
-    }
-
-    public void removeMainTask(TaskDTO taskDTO) {
-        this.mainTasks.remove(taskDTO);
-    }
+    //TODO plug in these methods
+//    public void addMainTask(TaskDTO taskDTO) {
+//        this.mainTasks.add(taskDTO);
+//    }
+//
+//    public void removeMainTask(TaskDTO taskDTO) {
+//        this.mainTasks.remove(taskDTO);
+//    }
 
     public void addHoliday(DayOfWeek dayOfWeek) {
         this.holidays.add(dayOfWeek);
@@ -36,6 +39,18 @@ public class WorkingPlanDTO implements Progressable {
 
     public void removeHoliday(DayOfWeek dayOfWeek) {
         this.holidays.remove(dayOfWeek);
+    }
+
+    public void setUpTasksWithHolidays() {
+        Optional<TaskDTO> taskOpt = mainTasks.stream()
+                .min(Comparator.comparing(TaskDTO::getRealStart));
+        if (taskOpt.isPresent()) {
+            TaskDTO first = taskOpt.get();
+            if (first instanceof SupTaskDTO)
+                ((SupTaskDTO) first).getMinimalTask().setUpHolidays(holidays);
+            else
+                ((SubTaskDTO) first).setUpHolidays(holidays);
+        }
     }
 
     @Override
