@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
 public abstract class TaskDTO implements Progressable {
@@ -16,6 +17,7 @@ public abstract class TaskDTO implements Progressable {
     protected int planningDurationInDays;
     protected LocalDate realStart;
     protected int realDurationInDays;
+    protected boolean isCreationProcess;
 
     protected TaskDTO(int id,
                       LocalDate planningStart,
@@ -23,8 +25,9 @@ public abstract class TaskDTO implements Progressable {
         this.id = id;
         this.planningStart = planningStart;
         this.planningDurationInDays = planningDurationInDays;
-        this.realStart = planningStart;
+        this.realStart = LocalDate.of(planningStart.getYear(), planningStart.getMonth(), planningStart.getDayOfMonth());
         this.realDurationInDays = planningDurationInDays;
+        this.isCreationProcess = true;
     }
 
     public TaskDTO(int id,
@@ -37,6 +40,7 @@ public abstract class TaskDTO implements Progressable {
         this.planningDurationInDays = planningDurationInDays;
         this.realStart = realStart;
         this.realDurationInDays = realDurationInDays;
+        this.isCreationProcess = false;
     }
 
     public boolean isInProgress() {
@@ -48,12 +52,39 @@ public abstract class TaskDTO implements Progressable {
     }
 
     public void setParent(SupTaskDTO parent) {
-        this.parent = parent;
-        parent.addSubTaskAvoidLoop(this);
-        parent.updateDateAndDuration();
+        if (parent != this) {
+            if (parent != null) {
+                parent.addSubTaskAvoidLoop(this);
+                parent.setUpChildrenChanged();
+                parent.updateDateAndDuration();
+            }
+
+            this.parent = parent;
+        }
     }
 
     protected void setParentAvoidLoop(SupTaskDTO parent) {
         this.parent = parent;
+    }
+
+    protected boolean isAcceptableForDependency(TaskDTO task) {
+        return task != null && !task.equals(this);
+    }
+
+    protected void disableCreationMode() {
+        this.isCreationProcess = false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TaskDTO)) return false;
+        TaskDTO taskDTO = (TaskDTO) o;
+        return id == taskDTO.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }

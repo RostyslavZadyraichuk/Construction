@@ -30,13 +30,19 @@ public class SupTaskDTO extends TaskDTO {
     }
 
     public void addSubTask(TaskDTO subTaskDTO) {
-        this.subTasks.add(subTaskDTO);
-        subTaskDTO.setParentAvoidLoop(this);
-        this.updateDateAndDuration();
+        if (isAcceptableForDependency(subTaskDTO) && !subTasks.contains(subTaskDTO)) {
+            this.subTasks.add(subTaskDTO);
+            subTaskDTO.setParentAvoidLoop(this);
+            this.setUpChildrenChanged();
+            this.updateDateAndDuration();
+        }
     }
 
     public void removeSubTask(TaskDTO subTaskDTO) {
-        this.subTasks.remove(subTaskDTO);
+        if (this.subTasks.remove(subTaskDTO)) {
+            setUpChildrenChanged();
+            updateDateAndDuration();
+        }
     }
 
     public void updateDateAndDuration() {
@@ -48,6 +54,16 @@ public class SupTaskDTO extends TaskDTO {
             realStart = first.getRealStart();
             realDurationInDays = Period.between(first.realStart, last.realStart).getDays();
             realDurationInDays += last.realDurationInDays;
+
+            if (isCreationProcess) {
+                planningStart = LocalDate.of(realStart.getYear(), realStart.getMonth(), realStart.getDayOfMonth());
+                planningDurationInDays = realDurationInDays;
+            }
+
+            if (parent != null) {
+                parent.setUpChildrenChanged();
+                parent.updateDateAndDuration();
+            }
 
             isChildrenChanged = false;
         }
@@ -89,16 +105,9 @@ public class SupTaskDTO extends TaskDTO {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SupTaskDTO supTaskDTO = (SupTaskDTO) o;
-        return Objects.equals(subTasks, supTaskDTO.subTasks);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(subTasks);
+    protected void disableCreationMode() {
+        super.disableCreationMode();
+        subTasks.forEach(TaskDTO::disableCreationMode);
     }
 
     protected void addSubTaskAvoidLoop(TaskDTO subTaskDTO) {
