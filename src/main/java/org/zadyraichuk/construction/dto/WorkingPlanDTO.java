@@ -14,17 +14,24 @@ public class WorkingPlanDTO implements Progressable {
     private final List<TaskDTO> mainTasks;
     private final List<DayOfWeek> holidays;
 
-    public WorkingPlanDTO() {
-        this.mainTasks = new ArrayList<>();
+//    public WorkingPlanDTO() {
+//        this.mainTasks = new ArrayList<>();
+//        this.holidays = new ArrayList<>();
+//    }
+
+    public WorkingPlanDTO(List<TaskDTO> mainTasks) {
+        this.mainTasks = mainTasks;
+        this.mainTasks.forEach(TaskDTO::disableCreationMode);
         this.holidays = new ArrayList<>();
     }
 
     public WorkingPlanDTO(List<TaskDTO> mainTasks, List<DayOfWeek> holidays) {
         this.mainTasks = mainTasks;
+        this.mainTasks.forEach(TaskDTO::disableCreationMode);
         this.holidays = holidays;
     }
 
-    //TODO plug in these methods
+    //TODO plug in these methods and default constructor
 //    public void addMainTask(TaskDTO taskDTO) {
 //        this.mainTasks.add(taskDTO);
 //    }

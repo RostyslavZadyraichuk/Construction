@@ -6,6 +6,10 @@ target/
 src/main/resources/credential.properties
 src/main/resources/*.json
 src/main/resources/tokens/
+src/test/webapp/**
+src/main/webapp/resources/img/not_used/**
+src/main/webapp/resources/css/*.css
+src/main/webapp/resources/css/*.css.map
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

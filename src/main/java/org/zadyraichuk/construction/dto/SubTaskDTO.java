@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Getter
 public class SubTaskDTO extends TaskDTO {
@@ -74,15 +73,19 @@ public class SubTaskDTO extends TaskDTO {
     //trigger isChildrenChanged in parent to false and all next tasks just skip that method
 
     public void addRequiredTask(SubTaskDTO requiredTask) {
-        this.requiredTasks.add(requiredTask);
-        requiredTask.addRequiredForAvoidLoop(this);
-        updateSelf();
+        if (isAcceptableForDependency(requiredTask) && !this.requiredTasks.contains(requiredTask)) {
+            this.requiredTasks.add(requiredTask);
+            requiredTask.addRequiredForAvoidLoop(this);
+            updateSelf();
+        }
     }
 
     public void addRequiredFor(SubTaskDTO requiredFor) {
-        this.requiredFor.add(requiredFor);
-        requiredFor.addRequiredTaskAvoidLoop(this);
-        requiredFor.updateSelf();
+        if (isAcceptableForDependency(requiredFor) && !this.requiredFor.contains(requiredFor)) {
+            this.requiredFor.add(requiredFor);
+            requiredFor.addRequiredTaskAvoidLoop(this);
+            requiredFor.updateSelf();
+        }
     }
 
     public void addIcogramObject(String icogramObject) {
@@ -119,20 +122,6 @@ public class SubTaskDTO extends TaskDTO {
     @Override
     public String getCurrentStage() {
         return description;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SubTaskDTO subTaskDTO = (SubTaskDTO) o;
-        return Objects.equals(requiredTasks, subTaskDTO.requiredTasks) &&
-                Objects.equals(requiredFor, subTaskDTO.requiredFor);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(requiredTasks, requiredFor);
     }
 
     protected void addRequiredTaskAvoidLoop(SubTaskDTO requiredTask) {
@@ -193,7 +182,8 @@ public class SubTaskDTO extends TaskDTO {
 
     private void updateSelf(LocalDate newDate, int newDurationInDays, List<DayOfWeek> holidays) {
         newDate = fitDateByHolidays(newDate, holidays);
-        if (!newDate.isEqual(realStart) && canStartBeChanged(newDate)) {
+        newDate = correctDate(newDate);
+        if (!newDate.isEqual(realStart)) {
             realStart = newDate;
         }
 
@@ -203,14 +193,28 @@ public class SubTaskDTO extends TaskDTO {
         }
 
         updateNextTasks(holidays);
-        parent.setUpChildrenChanged();
-        parent.updateDateAndDuration();
+        if (isAcceptableForDependency(parent)) {
+            parent.setUpChildrenChanged();
+            parent.updateDateAndDuration();
+        }
+
+        if (isCreationProcess) {
+            planningStart = LocalDate.of(realStart.getYear(), realStart.getMonth(), realStart.getDayOfMonth());
+            planningDurationInDays = realDurationInDays;
+        }
 
     }
 
-    private boolean canStartBeChanged(LocalDate date) {
+//    private boolean canStartBeChanged(LocalDate date) {
+//        LocalDate minimalStart = getMinimalStartDate();
+//        return minimalStart.isBefore(date);
+//    }
+
+    private LocalDate correctDate(LocalDate date) {
         LocalDate minimalStart = getMinimalStartDate();
-        return minimalStart.isBefore(date);
+        if (minimalStart.isBefore(date))
+            return date;
+        return minimalStart;
     }
 
     private LocalDate getMinimalStartDate() {
@@ -237,6 +241,12 @@ public class SubTaskDTO extends TaskDTO {
                 task.moveStartDate(getFinishDate(), holidays);
             }
         }
+    }
+
+    @Override
+    protected void disableCreationMode() {
+        super.disableCreationMode();
+        requiredFor.forEach(TaskDTO::disableCreationMode);
     }
 
 }
