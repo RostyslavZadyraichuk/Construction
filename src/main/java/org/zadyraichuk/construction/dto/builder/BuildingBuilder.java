@@ -12,11 +12,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
-public abstract class BuildingBuilder {
+public class BuildingBuilder {
 
     private static final String RESIDENTIAL_PATH = "src/main/resources/json/residential_template.json";
 
-    public WorkingPlanDTO useResidentialComplexTemplate(LocalDate start, int floors,
+    public Optional<WorkingPlanDTO> useResidentialComplexTemplate(LocalDate start, int floors,
                                                         List<DayOfWeek> holidays) {
         JSONObject template = readTemplateFromJSON(RESIDENTIAL_PATH);
 
@@ -33,14 +33,14 @@ public abstract class BuildingBuilder {
             List<TaskDTO> mainTasks = tasks.values().stream()
                     .filter(t -> t.getParent() == null)
                     .collect(Collectors.toList());
-            return new WorkingPlanDTO(mainTasks, holidays);
+            return Optional.of(new WorkingPlanDTO(mainTasks, holidays));
         } catch (NullPointerException e) {
             System.out.println("Errors when reading residential complex template");
         } catch (ClassCastException e) {
             System.out.println(e.getMessage());
         }
 
-        return new WorkingPlanDTO();
+        return Optional.empty();
     }
 
     private void setUpAllTasks(JSONArray tasks,
@@ -160,6 +160,7 @@ public abstract class BuildingBuilder {
         }
     }
 
+    //TODO create reverse writer
     private JSONObject readTemplateFromJSON(String fileName) {
         File file = new File(fileName);
 

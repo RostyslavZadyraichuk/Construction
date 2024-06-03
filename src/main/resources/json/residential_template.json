@@ -1,0 +1,57 @@
+{
+  "data": [
+    {"id": 1, "text": "Проведення попередніх робіт", "type": "SUB", "duration":16, "parent": 0},
+    {"id": 2, "text": "Виконання розмітки", "type": "SUB", "duration":4, "parent": 0},
+    {"id": 3, "text": "Здійснення земельних робіт", "type": "SUB", "duration": 14, "parent": 0},
+    {"id": 4, "text": "Монтаж основи + цокольний поверх", "type": "SUB", "duration":24, "parent": 0},
+
+    {"id": 5, "text": "Зведення несучих конструкцій", "type": "SUP", "parent": 0},
+    {"id": 6, "text": "0 поверх (колони + шахта + сходова клітка)", "type": "FLOOR", "duration": 5, "parent": 5, "floor": "BASE"},
+    {"id": 7, "text": "0 поверх (перекриття)", "type": "FLOOR", "duration": 5, "parent": 5, "floor": "BASE"},
+    {"id": 8, "text": "Дах (колони + шахта + сходова клітка)", "type": "FLOOR", "duration": 5, "parent": 5, "floor": "ROOF"},
+    {"id": 9, "text": "Дах (перекриття)", "type": "FLOOR", "duration": 5, "parent": 5, "floor": "ROOF"},
+
+    {"id": 10, "text": "Зведення зовнішніх стін", "type": "SUP", "parent": 0},
+    {"id": 11, "text": "0 поверх", "type": "FLOOR", "duration": 7, "parent": 10, "floor": "BASE"},
+    {"id": 12, "text": "Дах", "type": "FLOOR", "duration": 7, "parent": 10, "floor": "ROOF"},
+
+    {"id": 13, "text": "Зведення внутрішніх перегородок", "type": "SUP", "parent": 0},
+    {"id": 14, "text": "0 поверх", "type": "FLOOR", "duration": 7, "parent": 13, "floor": "BASE"},
+    {"id": 15, "text": "Дах", "type": "FLOOR", "duration": 7, "parent": 13, "floor": "ROOF"},
+
+    {"id": 16, "text": "Встановлення вікон та дверей", "type": "SUP", "parent": 0},
+    {"id": 17, "text": "0 поверх", "type": "FLOOR", "duration": 6, "parent": 16, "floor": "BASE"},
+    {"id": 18, "text": "Дах", "type": "FLOOR", "duration": 6, "parent": 16, "floor": "ROOF"},
+
+    {"id": 19, "text": "Внутрішні оздоблювальні роботи та лиття стяжки підлоги", "type": "SUP", "parent": 0},
+    {"id": 20, "text": "0 поверх", "type": "FLOOR", "duration": 10, "parent": 19, "floor": "BASE"},
+    {"id": 21, "text": "Дах", "type": "FLOOR", "duration": 10, "parent": 19, "floor": "ROOF"},
+
+    {"id": 22, "text": "Утеплення та зовнішні оздоблювальні роботи", "type": "SUP", "parent": 0},
+    {"id": 23, "text": "0 поверх", "type": "FLOOR", "duration": 10, "parent": 22, "floor": "BASE"},
+    {"id": 24, "text": "Дах", "type": "FLOOR", "duration": 10, "parent": 22, "floor": "ROOF"},
+
+    {"id": 25, "text": "Монтаж покрівлі", "type": "SUB", "duration": 7, "parent": 0},
+
+    {"id": 26, "text": "Облаштування прибудинкової території", "type": "SUB", "duration": 45, "parent": 0}
+  ],
+  "links":[
+    {"id":1, "source":1, "target":2},
+    {"id":2, "source":2, "target":3},
+    {"id":3, "source":3, "target":4},
+    {"id":4, "source":4, "target":6},
+
+    {"id":5, "source":6, "target":7},
+    {"id":7, "source":8, "target":9},
+    {"id":8, "source":9, "target":11},
+    {"id":10, "source":12, "target":14},
+    {"id":12, "source":15, "target":17},
+    {"id":14, "source":18, "target":20},
+    {"id":16, "source":18, "target":23},
+
+    {"id":18, "source":24, "target":25},
+
+    {"id":19, "source":21, "target":26},
+    {"id":20, "source":25, "target":26}
+  ]
+}
