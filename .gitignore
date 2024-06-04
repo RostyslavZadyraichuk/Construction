@@ -10,6 +10,7 @@ src/test/webapp/**
 src/main/webapp/resources/img/not_used/**
 src/main/webapp/resources/css/*.css
 src/main/webapp/resources/css/*.css.map
+src/main/webapp/resources/css/need_merge/**
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

@@ -1,0 +1,54 @@
+@import default
+@import _fonts.css
+
+footer
+  width: 100%
+  background-color: $gray-light
+
+  h2
+    font-size: 28px
+    //text-align: center
+    width: fit-content
+    margin: 10px auto 15px auto
+
+#footer-container
+  left: 0
+  right: 0
+  margin-left: auto
+  margin-right: auto
+  margin-bottom: 10px
+
+  @media screen and (min-width: 2800px)
+    width: 1920px
+
+  @media screen and (min-width: 1300px) and (max-width: 2800px)
+    width: 68%
+
+  @media screen and (min-width: 1000px) and (max-width: 1300px)
+    width: 85%
+
+  @media screen and (min-width: 800px) and (max-width: 1000px)
+    width: 100%
+
+  @media screen and (max-width: 800px)
+    width: 800px
+
+#contacts
+  display: flex
+  justify-content: space-around
+
+  p
+    font-size: 20px
+    color: $brown
+
+  .phone-number
+    font-size: 35px
+    color: $dark-brown
+
+  .social-media
+    display: inline-block
+
+    @media screen and (max-width: 1000px)
+      display: block
+      font-size: 30px
+      margin-right: 20px

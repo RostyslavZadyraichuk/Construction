@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Forms</title>
+        <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+        <link rel="stylesheet" href="../css/find_id_login_register.css">
+    </head>
+    <body>
+        <header></header>
+        <div class="content-container">
+            <div id="switcher-up">
+                <p class="icon icon-arrow-up-simple"></p>
+                <p>Пошук проекту</p>
+            </div>
+            <div id="forms-visible-area">
+                <div id="forms-container">
+                    <div id="find-project-form">
+                        <form action="" method="GET">
+                            <div class="image-wrapper">
+                                <img src="../img/default.jpg" alt="company image">
+                            </div>
+                            <div class="form-controls">
+                                <input type="text" placeholder="ідентифікатор" name="id">
+                                <button type="submit" onclick="findProject()">Знайти</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="login-register-form">
+                        <div class="container">
+                            <div id="login-register-switch">
+                                <div class="empty-left active"></div>
+                                <div id="switcher-login" class="login active">
+                                    <p class="icon"></p>
+                                    <p>Увійти</p>
+                                </div>
+                                <div id="switcher-register" class="register">
+                                    <p>Зареєструватись</p>
+                                    <p class="icon icon-arrow-right-triangle"></p>
+                                </div>
+                                <div class="empty-right"></div>
+                            </div>
+                            <div class="container-2">
+                                <div class="forms">
+                                    <div id="login-form">
+                                        <form action="" method="GET">
+                                            <div>
+                                                <label for="login-username">Нікнейм</label><br>
+                                                <input id="login-username" type="text" name="username" placeholder="username"><br>
+                                                <label for="login-password">Пароль</label><br>
+                                                <input id="login-password" type="password" name="password" placeholder="********"><br>
+                                            </div>
+                                            <div>
+                                                <button onclick="login()">
+                                                    <span>Вхід</span>
+                                                    <span class="icon icon-sign-in"></span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div id="register-form">
+                                        <form action="" method="POST">
+                                            <div id="register-selector">
+                                                <div class="general-constructor-radio active">
+                                                    <div>
+                                                        <label for="contractor-radio">Генпідрядник</label>
+                                                        <input id="contractor-radio" type="radio" name="user-type" value="contractor" checked>
+                                                    </div>
+                                                </div>
+                                                <div class="company-owner-radio">
+                                                    <div>
+                                                        <label for="company-radio">Власник компанії</label>
+                                                        <input id="company-radio" type="radio" name="user-type" value="company">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="register-forms-container">
+                                                <div id="user-fields">
+                                                    <div>
+                                                        <h3>Користувач</h3>
+                                                    </div>
+                                                    <div>
+                                                        <label for="register-username">Нікнейм</label><br>
+                                                        <input id="register-username" type="text" name="username" placeholder="username"><br>
+                                                        <label for="register-email">Пошта</label><br>
+                                                        <input id="register-email" type="email" name="email" placeholder="email@gmail.com" class="email-input"><br>
+                                                        <label for="register-password">Пароль</label><br>
+                                                        <input id="register-password" type="password" name="password" placeholder="********"><br>
+                                                        <label for="register-password-confirm">Підтвердження пароля</label><br>
+                                                        <input id="register-password-confirm" type="password" name="password-confirm" placeholder="********">
+                                                    </div>
+                                                </div>
+                                                <div id="company-fields">
+                                                    <div>
+                                                        <h3>Компанія</h3>
+                                                    </div>
+                                                    <div>
+                                                        <div>
+                                                            <div>
+                                                                <label for="register-name">Назва</label><br>
+                                                                <input id="register-name" class="inactive" type="text" name="name" placeholder="Лише з BankID" disabled>
+                                                            </div>
+                                                            <div>
+                                                                <label for="register-owner">Власник</label><br>
+                                                                <input id="register-owner" class="inactive" type="text" name="owner" placeholder="Лише з BankID" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <label for="register-company-email">Пошта</label><br>
+                                                        <input id="register-company-email" type="email" name="email" placeholder="email@gmail.com" class="email-input">
+                                                        <div>
+                                                            <div>
+                                                                <label for="register-phone">Телефон</label><br>
+                                                                <input id="register-phone" type="text" name="phone" placeholder="+380">
+                                                            </div>
+                                                            <div>
+                                                                <label for="register-website">Веб-сайт</label><br>
+                                                                <input id="register-website" type="text" name="website" placeholder="company.com.ua">
+                                                            </div>
+                                                        </div>
+                                                        <label for="register-office">Місцезнаходження</label><br>
+                                                        <input id="register-office" type="text" name="office" placeholder="вул. Франка, 54">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="register-buttons">
+                                                <div>
+                                                    <button id="register-user" class="inactive" type="submit" onclick="registerContractor(false)" disabled>Реєстрація</button>
+                                                    <button id="register-user-bankid" class="inactive" type="submit" onclick="registerContractor(true)" disabled>Реєстрація із BankID</button>
+                                                </div>
+                                                <div>
+                                                    <button id="register-company" class="inactive" onclick="registerCompany(false)" disabled>Реєстрація із BankID</button>
+                                                </div>
+                                            </div>
+
+                                            <div id="company-description-form">
+                                                <div>
+                                                    <div>
+                                                        <h3>Підтвердження реєстрації</h3>
+                                                    </div>
+                                                    <label for="register-name-confirm">Назва</label><br>
+                                                    <input id="register-name-confirm" class="inactive" type="text" name="name-confirm" value="Company Name" disabled><br>
+                                                    <label for="register-owner-confirm">Власник</label><br>
+                                                    <input id="register-owner-confirm" class="inactive" type="text" name="owner-confirm" value="Company Owner" disabled><br>
+                                                    <label for="register-description">Опис</label><br>
+                                                    <textarea name="description" id="register-description"></textarea>
+                                                </div>
+                                                <div>
+                                                    <button id="confirm-company" onclick="registerCompany(true)">Підтвердити</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="trial-btn" type="submit" onclick="loginTrial()">Пробна версія</button>
+                </div>
+            </div>
+            <div id="switcher-down">
+                <p class="icon icon-arrow-down-simple"></p>
+                <p>Увійти / Зареєструватись</p>
+            </div>
+<!--            <img id="background-image" src="../img/default.jpg" alt="">-->
+        </div>
+        <footer></footer>
+    </body>
+    <script crossorigin="anonymous"
+            integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js"
+            integrity="sha512-sR3EKGp4SG8zs7B0MEUxDeq8rw9wsuGVYNfbbO/GLCJ59LBE4baEfQBVsP2Y/h2n8M19YV1mujFANO1yA3ko7Q=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer">
+    </script>
+    <script src="../js/find_id_login_register.js"></script>
+</html>

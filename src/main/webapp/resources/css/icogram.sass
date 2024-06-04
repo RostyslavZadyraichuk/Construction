@@ -1,0 +1,143 @@
+@import icogram_colors
+@import need_merge/front_colors.css
+@import need_merge/back_colors.css
+@import need_merge/dynamic_colors.css
+
+$floor-1-pos: 25.46%
+$floor-2-pos: 25.33%
+$floor-offset: 2.76%
+$cran-pos: 50.06%
+$cran-offset: 4.4%
+//$cran-top-pos: 42.62%
+$cran-top-pos: 33.82%
+//$hook-pos: 47.64%
+$hook-pos: 43%
+$hook-offset: 2.9%
+$ladder-pos: 22.76%
+$ladder-offset: 2.64%
+
+//#hook
+//#left-tros
+//#right-tros
+//#cran-floor-part
+
+#icogram
+  position: relative
+  margin: 0
+  padding: 0
+  border: 0
+
+  & div
+    width: 100%
+    height: 100%
+    border: 0
+    margin: 0
+    padding: 0
+    position: absolute
+
+.icogram-element
+  position: absolute
+
+  &.back-element
+    width: 94.74%
+    left: 2.63%
+    bottom: 2.61%
+    z-index: 0
+
+  &.front
+    &-element
+      width: 90.67%
+      left: 4.665%
+      bottom: 5.12%
+      z-index: 8
+
+    &-finish
+      /* position: absolute */
+      width: 89.15%
+      left: 5.02%
+      bottom: 5.61%
+      z-index: 8
+
+  &.base
+    width: 46.85%
+    left: 29.9%
+    bottom: 18.65%
+    z-index: 2
+
+    &-paint
+      width: 46.85%
+      left: 29.9%
+      bottom: 19.98%
+      z-index: 2
+
+  &.floor
+    width: 46.34%
+    left: 30.18%
+    bottom: 25.33%
+    z-index: 4
+
+    @for $i from 1 through 15
+      &.f#{$i}
+        bottom: $floor-2-pos + ($i - 1) * $floor-offset
+
+  &.roof
+    z-index: 5
+    width: 46.88%
+    left: 29.86%
+
+    @for $i from 1 through 15
+      &.f#{$i}
+        bottom: $floor-2-pos + $i * $floor-offset
+
+  &.cran
+    &-base
+      width: 6.095%
+      left: 50.88%
+      bottom: 44.355%
+      z-index: 1
+
+    &-part
+      width: 3.45%
+      left: 52.21%
+      z-index: 2
+
+      @for $i from 0 through 15
+        &.f#{$i}
+          bottom: $cran-pos + $i * $cran-offset
+
+    &-top
+      width: 44%
+      left: 20.06%
+      z-index: 8
+
+      @for $i from 0 through 15
+        &.f#{$i}
+          bottom: $cran-top-pos + $i * $cran-offset
+
+  &.hook
+    width: 4.045%
+    left: 37.595%
+    z-index: 7
+
+    @for $i from 0 through 15
+      &.f#{$i}
+        bottom: $hook-pos + $i * $hook-offset
+
+        &.last
+          bottom: $hook-pos + $i * $hook-offset - ($hook-offset / 2)
+
+  &.ladder
+    &-base
+      width: 47.73%
+      left: 28.135%
+      bottom: 17.5%
+      z-index: 9
+
+    &-floor
+      width: 47.73%
+      left: 28.135%
+      z-index: 10
+
+      @for $i from 1 through 15
+        &.f#{$i}
+          bottom: $ladder-pos + ($i - 1) * $ladder-offset

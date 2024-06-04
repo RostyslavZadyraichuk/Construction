@@ -1,0 +1,124 @@
+$floor-1-pos: 25.46%
+$floor-2-pos: 25.33%
+$floor-offset: 2.76%
+$cran-pos: 50.06%
+$cran-offset: 4.4%
+$cran-top-pos: 42.62%
+$bricks-pos: 49.64%
+$ladder-pos: 22.76%
+$ladder-offset: 2.645%
+
+//lighter color: +50, +50, +50
+//darker color: -50, -50, -50
+$basic-color: rgb(184, 158,125)
+$second-color: rgb(217, 210, 167)
+$third-color: rgb(84, 56, 36)
+$window-color: rgb(106, 80, 91)
+$door-color: rgb(234, 234, 234)
+
+.icogram-element
+  position: absolute
+
+  &.back-element
+    width: 94.74%
+    left: 2.63%
+    bottom: 2.61%
+
+  &.front
+    &-element
+      width: 90.67%
+      left: 4.665%
+      bottom: 5.12%
+
+    &-finish
+      position: absolute
+      width: 89.15%
+      left: 5.02%
+      bottom: 5.61%
+
+  &.base
+    width: 46.85%
+    left: 29.9%
+    bottom: 18.65%
+
+    &-paint
+      width: 46.85%
+      left: 29.9%
+      bottom: 19.98%
+
+  &.floor
+    &-bricks, &-frame, &-windows
+      width: 46.04%
+      left: 30.34%
+      bottom: 25.46%
+
+      @for $i from 0 through 9
+        &.f#{$i}
+          bottom: $floor-1-pos + $i * $floor-offset
+
+    &-isolation, &-paint
+      width: 46.34%
+      left: 30.18%
+      bottom: 25.33%
+
+      @for $i from 0 through 9
+        &.f#{$i}
+          bottom: $floor-2-pos + $i * $floor-offset
+
+  &.roof
+    &-frame, &-bricks
+      width: 46.88%
+      left: 29.86%
+
+      @for $i from 1 through 9
+        &.f#{$i}
+          bottom: $floor-1-pos + ($i + 1) * $floor-offset
+
+    &-isolation, &-paint
+      width: 46.88%
+      left: 29.86%
+
+      @for $i from 1 through 9
+        &.f#{$i}
+          bottom: $floor-2-pos + ($i + 1) * $floor-offset
+
+  &.cran
+    &-base
+      width: 6.095%
+      left: 50.88%
+      bottom: 44.355%
+
+    &-part
+      width: 3.45%
+      left: 52.21%
+
+      @for $i from 0 through 9
+        &.f#{$i}
+          bottom: $cran-pos + $i * $cran-offset
+
+    &-top
+      width: 44%
+      left: 20.06%
+
+      @for $i from 0 through 9
+        &.f#{$i}
+          bottom: $cran-top-pos + $i * $cran-offset
+
+  &.bricks
+    width: 4.045%
+    left: 37.595%
+    bottom: 49.64%
+
+  &.ladder
+    &-base
+      width: 47.73%
+      left: 28.135%
+      bottom: 17.5%
+
+    &-floor
+      width: 47.73%
+      left: 28.135%
+
+      @for $i from 0 through 9
+        &.f#{$i}
+          bottom: $ladder-pos + $i * $ladder-offset

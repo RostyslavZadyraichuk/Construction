@@ -1,0 +1,82 @@
+@import default
+@import _fonts.css
+
+footer
+  width: 100%
+  background-color: $gray-light
+
+  h2
+    font-size: 28px
+    //text-align: center
+    width: fit-content
+    margin: 10px auto 15px auto
+
+#footer-container
+  left: 0
+  right: 0
+  margin-left: auto
+  margin-right: auto
+  display: flex
+  justify-content: space-between
+  height: 645px
+
+  @media screen and (min-width: 2800px)
+    width: 1920px
+
+  @media screen and (min-width: 1300px) and (max-width: 2800px)
+    width: 68%
+
+  @media screen and (min-width: 1000px) and (max-width: 1300px)
+    width: 85%
+
+  @media screen and (min-width: 800px) and (max-width: 1000px)
+    width: 100%
+
+  @media screen and (max-width: 800px)
+    width: 800px
+
+#vertical-divider
+  align-self: center
+  height: 90%
+  width: 0.3%
+  background-color: $dark-brown
+
+#contact-form
+  width: 49%
+  padding: 0 3%
+
+  form
+    display: flex
+    flex-direction: column
+
+    div
+      display: flex
+      justify-content: space-between
+
+      input
+        width: 49%
+
+    textarea
+      height: 200px
+
+    .button
+      border-radius: 0
+
+    & > *
+      width: 100%
+      margin-bottom: 8px
+
+#contacts
+  width: 49%
+  padding: 0 3%
+
+  p
+    font-size: 20px
+    color: $brown
+
+  .phone-number
+    font-size: 35px
+    color: $dark-brown
+
+  .social-media
+    display: inline-block
