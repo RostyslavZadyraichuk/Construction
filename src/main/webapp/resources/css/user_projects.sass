@@ -43,6 +43,8 @@
   align-items: center
   flex-wrap: nowrap
   margin-top: 0 !important
+  position: relative
+  z-index: 20
 
   & > div
     height: 100%
@@ -80,8 +82,14 @@
           color: $orange
           cursor: pointer
 
+          &.variant
+            background-color: rgb(red($gray-light) - 10, green($gray-light) - 10, blue($gray-light) - 10)
+
           .icon
             color: $orange !important
+
+      .variant
+        background-color: $gray-light
 
       .active
         display: flex
@@ -237,13 +245,14 @@
           height: 35px
 
           .progress-done
-            width: 68%
+            width: 8%
             background-color: $orange
             height: 100%
             text-align: center
             align-content: center
             font-weight: bold !important
             color: $dark-brown
+            white-space: nowrap
 
         .finish-date, .days-left
           p
